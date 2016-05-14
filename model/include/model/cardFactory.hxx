@@ -22,7 +22,7 @@ public:
 		}
 	}
 
-	CardType getType(std::string type)
+	CardType getCardType(std::string type)
 	{
 		//if(type == "Feature")
 			//return Feature;
@@ -33,7 +33,14 @@ public:
 		else
 			return None;
 	}
-	
+
+	EffectType getEffectType(std::string type)
+	{
+		if (type == "Buff")
+			return Buff;
+		else
+			return NoEffect;
+	}	
 };
 
 #endif

@@ -4,25 +4,37 @@
     <type>Creature</type>
     <name>Dev Junior</name>
     <cost>100</cost>
+    <dev>2</dev>
+    <test>0</test>
   </card>
   <card>
     <type>Spell</type>
     <name>Freeze</name>
     <cost>200</cost>
+    <Effect type="NoEffect"/>
   </card>
-    <card>
+  <card>
     <type>Spell</type>
-    <name>Fire</name>
+    <name>Brainstorm</name>
     <cost>50</cost>
+    <Effect type="Buff">
+      <devImpact>1</devImpact>
+      <testImpact>1</testImpact>
+      <duration>2</duration>
+    </Effect>
   </card>
-    <card>
+  <card>
     <type>Creature</type>
     <name>Tester</name>
     <cost>1000</cost>
+    <dev>1</dev>
+    <test>2</test>
   </card>
-    <card>
+  <card>
     <type>Creature</type>
     <name>Architect</name>
     <cost>2000</cost>
+    <dev>1</dev>
+    <test>0</test>
   </card>
 </cards>

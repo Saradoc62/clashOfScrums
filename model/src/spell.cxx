@@ -8,7 +8,8 @@ Card()
 }
 
 Spell::Spell(CardAttribute a) :
-Card(a.name, a.cost)
+Card(a.name, a.cost),
+_effect(a.effect)
 {
 
 }
@@ -34,5 +35,6 @@ void Spell::print() const
 {
 	std::cout << "Type : Spell" << std::endl;
 	Card::print();
+	_effect.print();
 	std::cout << std::endl;
 }

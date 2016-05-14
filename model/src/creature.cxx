@@ -40,6 +40,6 @@ void Creature::print() const
 {
 	std::cout << "Type : Creature" << std::endl;
 	Card::print();
-	std::cout << "Dev : " << _dev << std::endl;
+	std::cout << "Dev  : " << _dev << std::endl;
 	std::cout << "Test : " << _test << "\n" << std::endl;
 }

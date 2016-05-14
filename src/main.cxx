@@ -21,16 +21,6 @@ int main(int argc, char* argv[])
 		A->print();
 		deck.printInfo();
 	}
-
-	// std::string toto("toto");
-	// Creature A(toto, 100);
-	// A.print();
-
-	// Creature B(A);
-	// B.print();
-
-	// Creature C = B;
-	// C.print();
-
+	
 	return 0;
 }
