@@ -7,6 +7,7 @@ class Creature : public Card
 {
 public:
 	Creature();
+	Creature(CardAttribute attribute);
 	Creature(std::string& name, int cost);
 	Creature(Creature const& o);
 	~Creature();

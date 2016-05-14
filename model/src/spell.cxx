@@ -7,6 +7,12 @@ Card()
 
 }
 
+Spell::Spell(CardAttribute a) :
+Card(a.name, a.cost)
+{
+
+}
+
 Spell::Spell(std::string& name, int cost) : 
 Card(name, cost)
 {

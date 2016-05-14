@@ -1,12 +1,14 @@
 #ifndef __BASE_CARD_HXX__
 #define __BASE_CARD_HXX__
 
+#include <model/cardConfig.hxx>
 #include <string>
 
 class Card 
 {
 public: 
 	Card();
+	Card(CardAttribute attribute);
 	Card(std::string& name, int cost);
 	Card(Card const& o);
 	virtual ~Card();

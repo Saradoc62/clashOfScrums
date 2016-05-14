@@ -61,11 +61,12 @@ std::vector<Card*> Deck::initCardsFromXml()
 		    {
 		        if( c.first == "card" ) 
 		        {
-		            std::string strType = c.second.get<std::string>("type");
-		            CardType type = factory.getType(strType);
-		           	std::string name = c.second.get<std::string>("name");
-		           	int cost = c.second.get<int>("cost");
-		            cards.push_back(factory.makeCard(type, name, cost));
+		        	CardAttribute attribute;
+		            CardType type = factory.getType(c.second.get<std::string>("type"));
+
+		           	attribute.name = c.second.get<std::string>("name");
+		           	attribute.cost = c.second.get<int>("cost");
+		            cards.push_back(factory.makeCard(type, attribute));
 		        }
 		    }
 		}

@@ -4,28 +4,21 @@
 #include <model/creature.hxx>
 #include <model/spell.hxx>
 
-enum CardType {
-	None,
-	Feature,
-	Creature,
-	Spell
-};
-
 class CardFactory
 {
 public:
-	Card* makeCard(CardType type, std::string& name, int cost)
+	Card* makeCard(CardType type, CardAttribute attribute)
 	{
 		switch(type)
 		{
 			//case Feature:
 				//return new Feature();
 			case Creature:
-				return new class Creature(name, cost);
+				return new class Creature(attribute);
 			case Spell:
-				return new class Spell(name, cost);
+				return new class Spell(attribute);
 			default:
-				return new class Card(name, cost);
+				return new class Card(attribute);
 		}
 	}
 

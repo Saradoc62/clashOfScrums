@@ -8,6 +8,13 @@ _name("")
 
 }
 
+Card::Card(CardAttribute a) : 
+_cost(a.cost),
+_name(a.name)
+{
+
+}
+
 Card::Card(std::string& name, int cost) : 
 _cost(cost),
 _name(name)
