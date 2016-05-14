@@ -5,7 +5,7 @@
 
 BOOST_AUTO_TEST_CASE(CheckDeckSize)
 {
-	std::string xmlPath = "/Users/Cyril/dev/clashOfScrums/config/cards.xml";
+	std::string xmlPath = "res/cards.xml";
 	const int deckSize = 10;
 	
 	Deck deck(xmlPath, deckSize);

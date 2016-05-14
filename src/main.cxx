@@ -3,14 +3,15 @@
 
 #include <boost/foreach.hpp>
 
+#include "configuration.h"
 #include <model/deck.hxx>
 #include <model/creature.hxx>
 
 int main(int argc, char* argv[])
 {
-	std::string xmlPath = "/Users/Cyril/dev/clashOfScrums/config/cards.xml";
+	std::string xmlPath = std::string(RESOURCES_PATH) + "cards.xml";
 	const int deckSize = 10;
-	
+
 	Deck deck(xmlPath, deckSize);
 	deck.printInfo();
 
