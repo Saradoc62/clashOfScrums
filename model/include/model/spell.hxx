@@ -8,7 +8,6 @@ class Spell : public Card
 public:
 	Spell();	
 	Spell(CardAttribute attribute);
-	Spell(std::string& name, int cost);
 	Spell(Spell const& o);
 	~Spell();
 

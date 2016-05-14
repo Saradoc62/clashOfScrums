@@ -63,28 +63,28 @@ std::vector<Card*> Deck::initCardsFromXml()
 		        {
 		        	const pt::ptree card = c.second;
 		        	CardAttribute attribute;
-		            CardType type = factory.getCardType(c.second.get<std::string>("type"));
+		        	CardType cardType = factory.getCardType(card.get<std::string>("type"));
+		        	attribute.cardType = cardType;
 
 		           	attribute.name = card.get<std::string>("name");
 		           	attribute.cost = card.get<int>("cost");
-		           	if(type == Creature)
+		           	if(cardType == Creature)
 		           	{
 		           		attribute.dev = card.get<int>("dev");
 		           		attribute.test = card.get<int>("test");
 		           	}
-		           	else if(type == Spell)
-		           	{
-		           		const pt::ptree& effect = card.get_child("Effect");
-		           		EffectType type = factory.getEffectType(effect.get<std::string>("<xmlattr>.type"));
-		           		if(type != NoEffect)
-		           		{	
-		           		 	attribute.effect.type = type;
-		           		 	attribute.effect.devImpact = effect.get<int>("devImpact");
-		           		 	attribute.effect.testImpact = effect.get<int>("testImpact");
-		           		 	attribute.effect.duration = effect.get<int>("duration");
-		           		}
-		           	}
-		            cards.push_back(factory.makeCard(type, attribute));
+		        
+		           	const pt::ptree& effect = card.get_child("Effect");
+		           	EffectType effectType = factory.getEffectType(effect.get<std::string>("<xmlattr>.type"));
+		           	attribute.effect.type = effectType;
+
+		           	if(effectType != NoEffect)
+		           	{	
+		           		attribute.effect.devImpact = effect.get<int>("devImpact");
+		           		attribute.effect.testImpact = effect.get<int>("testImpact");
+		           		attribute.effect.duration = effect.get<int>("duration");
+		            }
+		            cards.push_back(factory.makeCard(attribute));
 		        }
 		    }
 		}

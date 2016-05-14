@@ -51,6 +51,7 @@ struct Effect {
 };
 
 struct CardAttribute {
+	CardType cardType;
 	std::string name;
 	int cost;
 	int dev;

@@ -6,6 +6,7 @@
     <cost>100</cost>
     <dev>2</dev>
     <test>0</test>
+    <Effect type="NoEffect"/>
   </card>
   <card>
     <type>Spell</type>
@@ -29,6 +30,7 @@
     <cost>1000</cost>
     <dev>1</dev>
     <test>2</test>
+    <Effect type="NoEffect"/>
   </card>
   <card>
     <type>Creature</type>
@@ -36,5 +38,10 @@
     <cost>2000</cost>
     <dev>1</dev>
     <test>0</test>
+    <Effect type="Buff">
+      <devImpact>1</devImpact>
+      <testImpact>0</testImpact>
+      <duration>0</duration>
+    </Effect>
   </card>
 </cards>

@@ -7,9 +7,9 @@
 class CardFactory
 {
 public:
-	Card* makeCard(CardType type, CardAttribute attribute)
+	Card* makeCard(CardAttribute attribute)
 	{
-		switch(type)
+		switch(attribute.cardType)
 		{
 			//case Feature:
 				//return new Feature();

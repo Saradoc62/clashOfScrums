@@ -8,17 +8,9 @@ Card()
 }
 
 Creature::Creature(CardAttribute a) :
-Card(a.name, a.cost),
+Card(a),
 _dev(a.dev),
 _test(a.test)
-{
-
-}
-
-Creature::Creature(std::string& name, int cost) : 
-Card(name, cost), 
-_dev(0), 
-_test(0)
 {
 
 }

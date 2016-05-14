@@ -9,16 +9,17 @@ class Card
 public: 
 	Card();
 	Card(CardAttribute attribute);
-	Card(std::string& name, int cost);
 	Card(Card const& o);
 	virtual ~Card();
 
 	const int getCost() const {return _cost;}
+	const std::string getName() const {return _name;}
 	virtual void print() const;
 
 private:
 	int _cost;
 	std::string _name;
+	Effect _effect;
 
 };
 

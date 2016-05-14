@@ -8,7 +8,6 @@ class Creature : public Card
 public:
 	Creature();
 	Creature(CardAttribute attribute);
-	Creature(std::string& name, int cost);
 	Creature(Creature const& o);
 	~Creature();
 
@@ -17,6 +16,7 @@ public:
 private:
 	int _dev;
 	int _test;
+	Effect _effect;
 };
 
 #endif
