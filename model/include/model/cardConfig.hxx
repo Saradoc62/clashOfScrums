@@ -44,9 +44,12 @@ struct Effect {
 	void print() const
 	{
 		std::cout << "EffectType    : " << toString(type) << std::endl;
-		std::cout << "DevImpact     : " << devImpact << std::endl;
-		std::cout << "TestImpact    : " << testImpact << std::endl;
-		std::cout << "Duration      : " << duration << std::endl;
+		if(type != NoEffect)
+		{
+			std::cout << "DevImpact     : " << devImpact << std::endl;
+			std::cout << "TestImpact    : " << testImpact << std::endl;
+			std::cout << "Duration      : " << duration << std::endl;
+		}
 	}
 };
 

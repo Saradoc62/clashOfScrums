@@ -16,7 +16,6 @@ public:
 private:
 	int _dev;
 	int _test;
-	Effect _effect;
 };
 
 #endif

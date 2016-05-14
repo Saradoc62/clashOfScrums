@@ -12,9 +12,6 @@ public:
 	~Spell();
 
 	void print() const;
-
-private:
-	Effect _effect;
 };
 
 #endif
