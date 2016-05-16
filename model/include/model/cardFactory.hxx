@@ -36,8 +36,10 @@ public:
 
 	EffectType getEffectType(std::string type)
 	{
-		if (type == "Buff")
+		if(type == "Buff")
 			return Buff;
+		else if(type == "CostDecrease")
+			return CostDecrease;
 		else
 			return NoEffect;
 	}	

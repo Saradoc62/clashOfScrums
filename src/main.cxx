@@ -1,11 +1,8 @@
 #include <iostream>
 #include <string>
 
-#include <boost/foreach.hpp>
-
 #include "configuration.h"
 #include <model/deck.hxx>
-#include <model/creature.hxx>
 
 int main(int argc, char* argv[])
 {
@@ -21,6 +18,6 @@ int main(int argc, char* argv[])
 		A->print();
 		deck.printInfo();
 	}
-	
+
 	return 0;
 }

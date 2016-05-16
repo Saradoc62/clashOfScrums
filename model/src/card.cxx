@@ -1,4 +1,6 @@
 #include <iostream>
+#include <boost/foreach.hpp>
+
 #include <model/card.hxx>
 
 Card::Card() : 
@@ -35,4 +37,26 @@ void Card::print() const
 	std::cout << "Name : " << _name << std::endl;
 	std::cout << "Cost : " << _cost << std::endl;
 	_effect.print();
+}
+
+void Card::applyEffectToBoard(std::vector<Card*> const& cards)
+{	
+	BOOST_FOREACH(Card* const& c, cards)
+	{
+		c->acceptEffect(_effect);
+	}
+}
+
+void Card::acceptEffect(Effect effect)
+{
+	switch(effect.type)
+	{
+		case NoEffect:
+			break;
+		case CostDecrease:
+			_cost -= effect.costImpact;
+			break;
+		default:
+			break;
+	}
 }

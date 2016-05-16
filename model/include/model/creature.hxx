@@ -11,6 +11,7 @@ public:
 	Creature(Creature const& o);
 	~Creature();
 
+	void acceptEffect(Effect effect);
 	void print() const;
 
 private:

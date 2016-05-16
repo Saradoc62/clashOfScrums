@@ -3,13 +3,15 @@
 
 #include <vector>
 
-class Card;
+#include <model/card.hxx>
 
 class Board 
 {
 public: 
 	Board();
+	Board(std::vector<Card*> cards);
 	~Board();
+	void applyEffects() const;
 
 private:
 	std::vector<Card*> _cards;

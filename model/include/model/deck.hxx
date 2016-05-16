@@ -4,7 +4,7 @@
 #include <vector>
 #include <string>
 
-class Card;
+#include <model/card.hxx>
 
 class Deck 
 {

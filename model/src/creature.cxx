@@ -1,4 +1,6 @@
 #include <iostream>
+
+#include <model/cardConfig.hxx>
 #include <model/creature.hxx>
 
 Creature::Creature() :
@@ -34,4 +36,22 @@ void Creature::print() const
 	Card::print();
 	std::cout << "Dev  : " << _dev << std::endl;
 	std::cout << "Test : " << _test << "\n" << std::endl;
+}
+
+void Creature::acceptEffect(Effect effect)
+{
+	switch(effect.type)
+	{
+		case NoEffect:
+			break;
+		case CostDecrease:
+			_cost -= effect.costImpact;
+			break;
+		case Buff:
+			_dev  += effect.devImpact;
+			_test += effect.testImpact;
+			break;
+		default:
+			break;
+	}
 }

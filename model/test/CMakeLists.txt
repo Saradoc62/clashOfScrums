@@ -14,3 +14,6 @@ target_link_libraries(dummyTestModel ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY})
 
 add_executable(deckTest deckTest.cxx)
 target_link_libraries(deckTest ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY} clashOfScrums-model)
+
+add_executable(boardTest boardTest.cxx)
+target_link_libraries(boardTest ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY} clashOfScrums-model)
