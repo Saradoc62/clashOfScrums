@@ -11,6 +11,7 @@ public:
 	Creature(Creature const& o);
 	~Creature();
 
+	const int getDev() const {return _dev;}
 	void acceptEffect(Effect effect);
 	void print() const;
 
