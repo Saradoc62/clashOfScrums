@@ -41,9 +41,16 @@ void Card::print() const
 
 void Card::applyEffectToBoard(std::vector<Card*> const& cards)
 {	
-	BOOST_FOREACH(Card* const& c, cards)
+	const bool hasEffect = _effect.type != NoEffect;
+	const bool onceEffectNotAlreadyApplied = !(_effect.occur == Once && _effect.alreadyApplied);
+
+	if(hasEffect && onceEffectNotAlreadyApplied)
 	{
-		c->acceptEffect(_effect);
+		BOOST_FOREACH(Card* const& c, cards) 
+		{
+			c->acceptEffect(_effect);
+		}
+		_effect.alreadyApplied = true;
 	}
 }
 

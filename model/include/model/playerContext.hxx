@@ -1,5 +1,5 @@
-#ifndef __PLAYER_CONTEXT_HXX
-#define __PLAYER_CONTEXT_HXX
+#ifndef __PLAYER_CONTEXT_HXX__
+#define __PLAYER_CONTEXT_HXX__
 
 #include <model/deck.hxx>
 #include <model/board.hxx>
@@ -15,7 +15,11 @@ public:
 
 	unsigned int getHandCardNb() const;
 	unsigned int getBoardCardNb() const;
+	unsigned int getDeckCardNb() const;
+
 	void printInfo() const;
+	void printHand() const;
+	void printBoard() const;
 
 private:
 	Deck*  _deck;

@@ -18,6 +18,7 @@ public:
 
 	virtual unsigned int getCardNb() const;
 	virtual void printInfo() const;
+	virtual void print() const;
 
 protected:
 	std::vector<Card*> _cards;

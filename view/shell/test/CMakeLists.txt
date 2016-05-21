@@ -9,5 +9,5 @@ endif()
 
 add_definitions(-DBOOST_TEST_DYN_LINK)
 
-add_executable(dummyTestView test.cxx)
-target_link_libraries(dummyTestView ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY})
+add_executable(dummyViewTest test.cxx)
+target_link_libraries(dummyViewTest ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY})

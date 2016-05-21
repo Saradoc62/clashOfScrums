@@ -1,23 +1,22 @@
-#include <iostream>
-#include <string>
+#include <vector>
 
-#include "configuration.h"
-#include <model/deck.hxx>
+#include <configuration.h>
+#include <shell/shellDemo.hxx>
 
 int main(int argc, char* argv[])
 {
+	//Load Deck
 	std::string xmlPath = std::string(RESOURCES_PATH) + "cards.xml";
 	const int deckSize = 10;
-
 	Deck deck(xmlPath, deckSize);
-	deck.printInfo();
 
-	while(deck.getCardNb() > 0)
-	{
-		const Card* A = deck.drawNext();
-		A->print();
-		deck.printInfo();
-	}
+	//Create players
+	std::vector<PlayerContext*> players;
 
-	return 0;
+	PlayerContext* player1 = new PlayerContext(&deck);
+	players.push_back(player1);
+
+	//Run demo
+	ShellDemo demo(players);
+	demo.run();
 }

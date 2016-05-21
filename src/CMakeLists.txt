@@ -8,4 +8,4 @@ else()
 endif()
 
 add_executable(${PROJECT_NAME} main.cxx)
-target_link_libraries(${PROJECT_NAME} clashOfScrums-model)
+target_link_libraries(${PROJECT_NAME} clashOfScrums-model clashOfScrums-view-shell)

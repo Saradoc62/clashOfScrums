@@ -17,6 +17,12 @@ enum EffectType {
 	Buff
 };
 
+enum Occurence {
+	Once,
+	EachTurn,
+	Unknown
+};
+
 namespace {
 	std::string toString(EffectType type)
 	{
@@ -29,12 +35,28 @@ namespace {
 			case Buff:
 				return "Buff";
 			default:
-				return "None";		}
+				return "None";		
+		}
+	}
+
+	std::string toString(Occurence occur)
+	{
+		switch(occur)
+		{
+			case Once:
+				return "Once";
+			case EachTurn:
+				return "EachTurn";	
+			case Unknown:
+				return "Unknown";
+		}
 	}
 }
 
 struct Effect {
 	EffectType type;
+	Occurence occur;
+	bool alreadyApplied;
 	int costImpact;
 	int devImpact;
 	int testImpact;
@@ -43,6 +65,8 @@ struct Effect {
 	Effect()
 	{
 		type = NoEffect;
+		occur = Unknown;
+		alreadyApplied = false;
 		devImpact = 0;
 		testImpact = 0;
 		duration = 0;
@@ -53,10 +77,11 @@ struct Effect {
 		std::cout << "EffectType    : " << toString(type) << std::endl;
 		if(type != NoEffect)
 		{
-			std::cout << "costImpact    : " << costImpact << std::endl;
-			std::cout << "DevImpact     : " << devImpact << std::endl;
-			std::cout << "TestImpact    : " << testImpact << std::endl;
-			std::cout << "Duration      : " << duration << std::endl;
+			std::cout << "Occurence     : " << toString(occur)  << std::endl;
+			std::cout << "costImpact    : " << costImpact 		<< std::endl;
+			std::cout << "DevImpact     : " << devImpact 		<< std::endl;
+			std::cout << "TestImpact    : " << testImpact 		<< std::endl;
+			std::cout << "Duration      : " << duration 		<< std::endl;
 		}
 	}
 };

@@ -9,6 +9,14 @@
     <Effect type="NoEffect"/>
   </card>
   <card>
+    <type>Creature</type>
+    <name>Tester Junior</name>
+    <cost>100</cost>
+    <dev>0</dev>
+    <test>2</test>
+    <Effect type="NoEffect"/>
+  </card>
+  <card>
     <type>Spell</type>
     <name>Freeze</name>
     <cost>200</cost>
@@ -16,9 +24,15 @@
   </card>
   <card>
     <type>Spell</type>
+    <name>Fire</name>
+    <cost>200</cost>
+    <Effect type="NoEffect"/>
+  </card>
+  <card>
+    <type>Spell</type>
     <name>Brainstorm</name>
     <cost>50</cost>
-    <Effect type="Buff">
+    <Effect type="Buff" occur="Once"> 
       <devImpact>1</devImpact>
       <testImpact>1</testImpact>
       <duration>2</duration>
@@ -29,7 +43,15 @@
     <name>Tester</name>
     <cost>1000</cost>
     <dev>1</dev>
-    <test>2</test>
+    <test>3</test>
+    <Effect type="NoEffect"/>
+  </card>
+  <card>
+    <type>Creature</type>
+    <name>Intern</name>
+    <cost>0</cost>
+    <dev>0</dev>
+    <test>0</test>
     <Effect type="NoEffect"/>
   </card>
   <card>
@@ -38,7 +60,7 @@
     <cost>2000</cost>
     <dev>1</dev>
     <test>0</test>
-    <Effect type="Buff">
+    <Effect type="Buff" occur="Once">
       <devImpact>1</devImpact>
       <testImpact>0</testImpact>
       <duration>0</duration>

@@ -42,6 +42,16 @@ public:
 			return CostDecrease;
 		else
 			return NoEffect;
+	}
+
+	Occurence getOccurence(std::string occur)
+	{
+		if(occur == "Once")
+			return Once;
+		else if(occur == "EachTurn")
+			return EachTurn;
+		else
+			return Unknown;
 	}	
 };
 

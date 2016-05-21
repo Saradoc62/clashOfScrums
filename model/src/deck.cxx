@@ -80,6 +80,7 @@ std::vector<Card*> Deck::initCardsFromXml()
 
 		           	if(effectType != NoEffect)
 		           	{	
+		           		attribute.effect.occur = factory.getOccurence(effect.get<std::string>("<xmlattr>.occur"));
 		           		attribute.effect.devImpact = effect.get<int>("devImpact");
 		           		attribute.effect.testImpact = effect.get<int>("testImpact");
 		           		attribute.effect.duration = effect.get<int>("duration");
@@ -112,7 +113,6 @@ void Deck::randomizeCards()
 
 const Card* Deck::drawNext()
 { 
-	std::cout << "==> Draw Card : " << std::endl;
 	Card* card = _deckCards[0];
 	_deckCards.erase(_deckCards.begin());
 	return card;
