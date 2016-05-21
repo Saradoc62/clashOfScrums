@@ -13,12 +13,18 @@ configure_file (
 )
 include_directories(${EXECUTABLE_OUTPUT_PATH})
 
+# Clean target of unit coverage
+set(INPUT_CMAKE_DIR ${CMAKE_SOURCE_DIR}/cmake)
+set(OUTPUT_CMAKE_DIR ${CMAKE_BINARY_DIR}/cmake)
+configure_file(${INPUT_CMAKE_DIR}/coverage-clean.cmake.in ${OUTPUT_CMAKE_DIR}/coverage-clean.cmake IMMEDIATE @ONLY)
+add_custom_target(coverage-clean COMMAND "${CMAKE_COMMAND}" -P ${OUTPUT_CMAKE_DIR}/coverage-clean.cmake)
+
 add_subdirectory(src)
 add_subdirectory(model)
 add_subdirectory(view)
 
 enable_testing()
-add_test(NAME dummyTestModel COMMAND dummyTestModel)
 add_test(NAME deckTest COMMAND deckTest)
 add_test(NAME boardTest COMMAND boardTest)
+add_test(NAME playerContextTest COMMAND playerContextTest)
 add_test(NAME dummyTestView COMMAND dummyTestView)

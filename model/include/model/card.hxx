@@ -21,13 +21,10 @@ public:
 	virtual void acceptEffect(Effect effect);
 	virtual void print() const;
 
-private:
+protected:
 	int _cost;
 	std::string _name;
 	Effect _effect;
-
-	friend class Creature;
-	friend class Spell;
 };
 
 #endif

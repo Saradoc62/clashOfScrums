@@ -10,11 +10,28 @@ class Board
 public: 
 	Board();
 	Board(std::vector<Card*> cards);
-	~Board();
-	void applyEffects() const;
+	virtual ~Board();
 
-private:
+	virtual void addCard(const Card* card);
+	virtual const Card* getCard(const int index);
+	virtual void applyEffects() const;
+
+	virtual unsigned int getCardNb() const;
+	virtual void printInfo() const;
+
+protected:
 	std::vector<Card*> _cards;
+};
+
+class Hand : public Board
+{
+public:
+	Hand();
+	Hand(std::vector<Card*> cards);
+	virtual ~Hand();
+
+	virtual void printInfo() const;
+
 };
 
 #endif
