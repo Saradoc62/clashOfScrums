@@ -19,4 +19,6 @@ int main(int argc, char* argv[])
 	//Run demo
 	ShellDemo demo(players);
 	demo.run();
+
+	return 0;
 }

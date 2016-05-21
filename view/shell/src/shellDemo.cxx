@@ -46,7 +46,7 @@ void ShellDemo::run()
 			{
 				std::cout << "Select card to play " << std::endl;
 				std::cin >> index;
-				if(index < player->getHandCardNb())
+				if(index-1 < player->getHandCardNb())
 				{
 					player->playCard(index-1);
 					player->printBoard();
