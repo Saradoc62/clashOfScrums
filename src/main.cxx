@@ -11,10 +11,13 @@ int main(int argc, char* argv[])
 	Deck deck(xmlPath, deckSize);
 
 	//Create players
+	const int nbOfPlayers = 4;
 	std::vector<PlayerContext*> players;
-
-	PlayerContext* player1 = new PlayerContext(&deck);
-	players.push_back(player1);
+	for(int i = 0; i < nbOfPlayers; ++i)
+	{
+		PlayerContext* player = new PlayerContext(&deck);
+		players.push_back(player);
+	}
 
 	//Run demo
 	ShellDemo demo(players);

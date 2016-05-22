@@ -13,7 +13,11 @@ public:
 	void run();
 
 private:
+
+	void playTurn(PlayerContext* player);
+
 	std::vector<PlayerContext*> _players;
+	bool _keepPlay;
 };
 
 #endif

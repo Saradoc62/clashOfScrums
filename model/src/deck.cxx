@@ -120,9 +120,13 @@ void Deck::randomizeCards()
 }
 
 Card* Deck::drawNext()
-{ 
-	Card* card = _deckCards[0];
-	_deckCards.erase(_deckCards.begin());
+{
+	Card* card = NULL;
+	if(_deckCards.size() > 0)
+	{
+		card = _deckCards[0];
+		_deckCards.erase(_deckCards.begin());
+	}
 	return card;
 }
 
