@@ -45,7 +45,7 @@ BOOST_AUTO_TEST_CASE(PlayerDrawAndPlayCardMechanismConsistency)
 		BOOST_CHECK_EQUAL(aCtxt.getHandCardNb(), --i);
 	}
 
-	//Check that board contains only creature cards 
+	//Check that board contains only Creature cards 
 	//Spell should not be added to board
 	const int expectedBoardSize = nbOfCreatures;
 	BOOST_CHECK_EQUAL(aCtxt.getBoardCardNb(), expectedBoardSize);

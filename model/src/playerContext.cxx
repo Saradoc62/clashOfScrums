@@ -27,6 +27,15 @@ void PlayerContext::playCard(const int index)
 	_board->addCard(card);
 }
 
+void PlayerContext::printActions() const
+{
+	std::cout << "* ACTIONS *"   << std::endl;
+	std::cout << "1 : Draw Card" << std::endl;
+	std::cout << "2 : Play Card" << std::endl;
+	std::cout << "3 : End Turn"  << std::endl;
+	std::cout << "4 : End Game \n" << std::endl;
+}
+
 unsigned int PlayerContext::getHandCardNb() const
 {
 	return _hand->getCardNb();

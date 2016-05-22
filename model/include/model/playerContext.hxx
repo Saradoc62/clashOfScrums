@@ -4,6 +4,14 @@
 #include <model/deck.hxx>
 #include <model/board.hxx>
 
+enum Actions 
+{
+	drawCard = 1,
+	playCard = 2,
+	endTurn  = 3,
+	stopGame = 4
+};
+
 class PlayerContext
 {
 public:
@@ -16,6 +24,7 @@ public:
 	unsigned int getHandCardNb() const;
 	unsigned int getBoardCardNb() const;
 	unsigned int getDeckCardNb() const;
+	void printActions() const;
 
 	void printInfo() const;
 	void printHand() const;

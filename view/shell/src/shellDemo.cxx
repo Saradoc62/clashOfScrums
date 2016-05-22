@@ -1,5 +1,4 @@
 #include <shell/shellDemo.hxx>
-#include <shell/actions.hxx>
 
 ShellDemo::ShellDemo()
 {
@@ -21,42 +20,52 @@ ShellDemo::~ShellDemo()
 void ShellDemo::playTurn(PlayerContext* player)
 {
 	int action, index;
+	bool endOfTurn = false;
 
-	printActions();
-	std::cin >> action;
-
-	switch(action)
+	do 
 	{
-		case drawCard:
+		player->printActions();
+		std::cin >> action;
+
+		switch(action)
 		{
-			if(player->getDeckCardNb() > 0)
+			case drawCard:
 			{
-				player->drawCard();
-			}
-			player->printHand();
-			break;
-		}
-		case playCard:
-		{
-			if(player->getHandCardNb() > 0)
-			{
-				std::cout << "Select card to play " << std::endl;
-				std::cin >> index;
-				if(index-1 < player->getHandCardNb())
+				if(player->getDeckCardNb() > 0)
 				{
-					player->playCard(index-1);
-					player->printBoard();
-					player->printHand();
+					player->drawCard();
 				}
+				player->printHand();
+				break;
 			}
-			break;
+			case playCard:
+			{
+				if(player->getHandCardNb() > 0)
+				{
+					std::cout << "Select card to play " << std::endl;
+					std::cin >> index;
+					if(index-1 < player->getHandCardNb())
+					{
+						player->playCard(index-1);
+						player->printBoard();
+						player->printHand();
+					}
+				}
+				break;
+			}
+			case endTurn:
+			{
+				endOfTurn = true;
+				break;
+			}
+			case stopGame:
+			{
+				endOfTurn = true;
+				_keepPlay = false;
+				break;
+			}
 		}
-		case stopGame:
-		{
-			_keepPlay = false;
-			break;
-		}
-	}
+	} while(!endOfTurn);
 }
 
 void ShellDemo::run()
@@ -68,7 +77,7 @@ void ShellDemo::run()
 
 	do
 	{
-		std::cout << "Player " << next + 1 << " turn ! " << std::endl;
+		std::cout << "-- Player " << next + 1 << " turn ! \n" << std::endl;
 	  	playTurn(_players[next]);
 	  	next = ++i % nbOfPlayers;
 
