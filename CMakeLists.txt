@@ -13,7 +13,7 @@ configure_file (
 )
 include_directories(${EXECUTABLE_OUTPUT_PATH})
 
-# Clean target of unit coverage
+#Clean target of unit coverage
 set(INPUT_CMAKE_DIR ${CMAKE_SOURCE_DIR}/cmake)
 set(OUTPUT_CMAKE_DIR ${CMAKE_BINARY_DIR}/cmake)
 configure_file(${INPUT_CMAKE_DIR}/coverage-clean.cmake.in ${OUTPUT_CMAKE_DIR}/coverage-clean.cmake IMMEDIATE @ONLY)

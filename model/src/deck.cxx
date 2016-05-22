@@ -25,6 +25,14 @@ _max(max)
 	init();
 }
 
+Deck::Deck(std::vector<Card*> cards) :
+_xmlPath(""), 
+_max(cards.size()),
+_deckCards(cards)
+{
+
+}
+
 Deck::~Deck()
 {
 
@@ -111,7 +119,7 @@ void Deck::randomizeCards()
 	}
 }
 
-const Card* Deck::drawNext()
+Card* Deck::drawNext()
 { 
 	Card* card = _deckCards[0];
 	_deckCards.erase(_deckCards.begin());

@@ -19,15 +19,24 @@ Board::~Board()
 
 }
 
-void Board::addCard(const Card* card)
+void Board::addCard(Card* card)
 {
-	_cards.push_back(const_cast<Card*>(card));
-	applyEffects();
+	//Spell cards are not added to board
+	if(card->getType().find("Spell") == std::string::npos) 
+	{
+		_cards.push_back(card);
+		applyEffects();
+	}
+	else
+	{
+		//But its effect are still applied
+		card->applyEffectToBoard(_cards);
+	}
 }
 
-const Card* Board::getCard(const int index)
+Card* Board::getCard(const int index)
 {
-	const Card* card = _cards[index];
+	Card* card = _cards[index];
 	_cards.erase(_cards.begin() + index);
 	return card;
 }
@@ -80,6 +89,11 @@ Board(cards)
 Hand::~Hand()
 {
 
+}
+
+void Hand::addCard(Card* card)
+{
+	_cards.push_back(card);
 }
 
 void Hand::printInfo() const

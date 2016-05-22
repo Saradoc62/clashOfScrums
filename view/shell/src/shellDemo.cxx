@@ -44,13 +44,16 @@ void ShellDemo::run()
 			}
 			case playCard:
 			{
-				std::cout << "Select card to play " << std::endl;
-				std::cin >> index;
-				if(index-1 < player->getHandCardNb())
+				if(player->getHandCardNb() > 0)
 				{
-					player->playCard(index-1);
-					player->printBoard();
-					player->printHand();
+					std::cout << "Select card to play " << std::endl;
+					std::cin >> index;
+					if(index-1 < player->getHandCardNb())
+					{
+						player->playCard(index-1);
+						player->printBoard();
+						player->printHand();
+					}
 				}
 				break;
 			}

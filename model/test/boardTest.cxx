@@ -27,7 +27,7 @@ BOOST_AUTO_TEST_CASE(checkBoardEffects)
 	//Create Spell
 	Effect effect2;
 	effect2.type = CostDecrease;
-	effect1.occur = Once;
+	effect2.occur = Once;
 	effect2.costImpact = 50;
 	atSpell.name = "spell";
 	atSpell.effect = effect2;

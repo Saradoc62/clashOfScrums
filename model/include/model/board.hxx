@@ -12,8 +12,8 @@ public:
 	Board(std::vector<Card*> cards);
 	virtual ~Board();
 
-	virtual void addCard(const Card* card);
-	virtual const Card* getCard(const int index);
+	virtual void addCard(Card* card);
+	virtual Card* getCard(const int index);
 	virtual void applyEffects() const;
 
 	virtual unsigned int getCardNb() const;
@@ -30,6 +30,8 @@ public:
 	Hand();
 	Hand(std::vector<Card*> cards);
 	virtual ~Hand();
+
+	virtual void addCard(Card* card);
 
 	virtual void printInfo() const;
 

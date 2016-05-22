@@ -11,9 +11,10 @@ class Deck
 public: 
 	Deck();
 	Deck(std::string& path, int max);
+	Deck(std::vector<Card*> cards);
 	~Deck();
 
-	const Card* drawNext();
+	Card* drawNext();
 	const int getCardNb() const {return _deckCards.size();}
 
 	void printInfo() const;

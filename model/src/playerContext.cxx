@@ -15,14 +15,14 @@ PlayerContext::~PlayerContext()
 
 void PlayerContext::drawCard()
 {
-	const Card* card = _deck->drawNext();
+	Card* card = _deck->drawNext();
 	std::cout << "==> Draw Card : " << card->getName() << "\n" << std::endl;
 	_hand->addCard(card);
 }
 
 void PlayerContext::playCard(const int index)
 {
-	const Card* card = _hand->getCard(index);
+	Card* card = _hand->getCard(index);
 	std::cout << "==> Play Card : " << card->getName() << "\n" << std::endl;
 	_board->addCard(card);
 }
