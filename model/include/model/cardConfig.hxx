@@ -24,6 +24,21 @@ enum Occurence {
 };
 
 namespace {
+	std::string toString(CardType type)
+	{
+		switch(type)
+		{
+			case Feature:
+				return "Feature";
+			case Creature:
+				return "Creature";
+			case Spell:
+				return "Spell";
+			default:
+				return "None";		
+		}
+	}
+
 	std::string toString(EffectType type)
 	{
 		switch(type)
@@ -92,6 +107,11 @@ struct CardAttribute {
 	int cost;
 	int dev;
 	int test;
+	int income;
+    int benefits;
+    int devRequired;
+	int testRequired;
+	int deadline;
 	Effect effect;
 
 	CardAttribute()
@@ -100,6 +120,11 @@ struct CardAttribute {
 		cost = 0;
 		dev = 0;
 		test = 0;
+		income = 0;
+		benefits = 0;
+		devRequired = 0;
+		testRequired = 0;
+		deadline = 0;
 		effect = Effect();
 	}
 };

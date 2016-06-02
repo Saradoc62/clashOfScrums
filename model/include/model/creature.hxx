@@ -12,6 +12,7 @@ public:
 	~Creature();
 
 	const int getDev() const {return _dev;}
+	const int getTest() const {return _test;}
 	void acceptEffect(Effect effect);
 	void print() const;
 

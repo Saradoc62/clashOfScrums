@@ -4,7 +4,9 @@
 #include <model/creature.hxx>
 
 Creature::Creature() :
-Card()
+Card(),
+_dev(0),
+_test(0)
 {
 
 }

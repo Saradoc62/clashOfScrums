@@ -22,8 +22,11 @@ void ShellDemo::playTurn(PlayerContext* player)
 	int action, index;
 	bool endOfTurn = false;
 
+	player->prepare();
+
 	do 
 	{
+		player->printInfo();
 		player->printActions();
 		std::cin >> action;
 
@@ -40,21 +43,42 @@ void ShellDemo::playTurn(PlayerContext* player)
 			}
 			case playCard:
 			{
+				player->printHandWithCost();
 				if(player->getHandCardNb() > 0)
 				{
 					std::cout << "Select card to play " << std::endl;
 					std::cin >> index;
-					if(index-1 < player->getHandCardNb())
+					if(index <= player->getHandCardNb())
 					{
-						player->playCard(index-1);
-						player->printBoard();
-						player->printHand();
+						if(player->playCard(index-1))
+						{
+							player->printBoard();
+							player->printHand();
+						}
 					}
 				}
 				break;
 			}
+			case makeFeature:
+			{
+				int featureIdx, creatureIdx;
+				player->printBoardFeatures();
+				std::cout << "Select a feature " << std::endl;
+				std::cin >> featureIdx;
+				player->printBoardCreatures();
+				std::cout << "Select a creature " << std::endl;
+				std::cin >> creatureIdx;
+
+				if(featureIdx <= player->getBoardCardTypeNb(Feature) && creatureIdx <= player->getBoardCardTypeNb(Creature))
+				{
+					player->makeFeature(featureIdx, creatureIdx);
+				}
+				player->printBoardFeatures();
+				break;
+			}
 			case endTurn:
 			{
+				player->update();
 				endOfTurn = true;
 				break;
 			}

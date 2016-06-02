@@ -23,6 +23,39 @@
     <Effect type="NoEffect"/>
   </card>
   <card>
+    <type>Feature</type>
+    <name>3DPrinting</name>
+    <cost>0</cost>
+    <income>4000</income>
+    <benefits>1000000</benefits>
+    <devRequired>20</devRequired>
+    <testRequired>10</testRequired>
+    <deadline>4</deadline>
+    <Effect type="NoEffect"/>
+  </card>  
+  <card>
+    <type>Feature</type>
+    <name>Cardiac Perfusion</name>
+    <cost>0</cost>
+    <income>3000</income>
+    <benefits>750000</benefits>
+    <devRequired>15</devRequired>
+    <testRequired>12</testRequired>
+    <deadline>4</deadline>
+    <Effect type="NoEffect"/>
+  </card>  
+  <card>
+    <type>Feature</type>
+    <name>CXP</name>
+    <cost>0</cost>
+    <income>1000</income>
+    <benefits>300000</benefits>
+    <devRequired>10</devRequired>
+    <testRequired>10</testRequired>
+    <deadline>3</deadline>
+    <Effect type="NoEffect"/>
+  </card>  
+  <card>    
     <type>Spell</type>
     <name>Fire</name>
     <cost>200</cost>

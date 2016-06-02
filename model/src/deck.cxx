@@ -76,10 +76,19 @@ std::vector<Card*> Deck::initCardsFromXml()
 
 		           	attribute.name = card.get<std::string>("name");
 		           	attribute.cost = card.get<int>("cost");
+
 		           	if(cardType == Creature)
 		           	{
 		           		attribute.dev = card.get<int>("dev");
 		           		attribute.test = card.get<int>("test");
+		           	}
+		           	else if (cardType == Feature)
+		           	{
+		           		attribute.income = card.get<int>("income");
+		           		attribute.benefits = card.get<int>("benefits");
+		           		attribute.devRequired = card.get<int>("devRequired");
+		           		attribute.testRequired = card.get<int>("testRequired");
+		           		attribute.deadline = card.get<int>("deadline");
 		           	}
 		        
 		           	const pt::ptree& effect = card.get_child("Effect");

@@ -1,6 +1,7 @@
 #ifndef __CARD_FACTORY_HXX__
 #define __CARD_FACTORY_HXX__
 
+#include <model/feature.hxx>
 #include <model/creature.hxx>
 #include <model/spell.hxx>
 
@@ -11,8 +12,8 @@ public:
 	{
 		switch(attribute.cardType)
 		{
-			//case Feature:
-				//return new Feature();
+			case Feature:
+				return new class Feature(attribute);
 			case Creature:
 				return new class Creature(attribute);
 			case Spell:
@@ -24,8 +25,8 @@ public:
 
 	CardType getCardType(std::string type)
 	{
-		//if(type == "Feature")
-			//return Feature;
+		if(type == "Feature")
+			return Feature;
 		if (type == "Creature")
 			return Creature;
 		else if (type == "Spell")

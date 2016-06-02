@@ -14,14 +14,21 @@ public:
 
 	virtual void addCard(Card* card);
 	virtual Card* getCard(const int index);
+	virtual Card* getCardType(CardType type, const int index);
+	virtual std::vector<Card*> getCards();
 	virtual void applyEffects() const;
+	void update();
 
 	virtual unsigned int getCardNb() const;
+	virtual int getCardTypeNb(CardType type) const;
+
 	virtual void printInfo() const;
 	virtual void print() const;
+    virtual void printCardType(CardType type) const;
 
 protected:
 	std::vector<Card*> _cards;
+
 };
 
 class Hand : public Board
@@ -32,8 +39,10 @@ public:
 	virtual ~Hand();
 
 	virtual void addCard(Card* card);
+	virtual Card* getCard(const int index);
 
 	virtual void printInfo() const;
+	void printWithCost() const;
 
 };
 
