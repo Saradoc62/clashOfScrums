@@ -5,11 +5,12 @@ ShellDemo::ShellDemo()
 
 }
 
-ShellDemo::ShellDemo(std::vector<PlayerContext*> players, Deck* deck) :
+ShellDemo::ShellDemo(std::vector<PlayerContext*> players, Deck* deck, Rules rules) :
 _players(players),
-_keepPlay(true)
+_keepPlay(true),
+_rules(rules)
 {
-	_deck  = deck;
+	_deck = deck;
 }
 
 ShellDemo::~ShellDemo()
@@ -19,7 +20,8 @@ ShellDemo::~ShellDemo()
 
 void ShellDemo::playTurn(PlayerContext* player)
 {
-	int action, index;
+	int action;
+	int drawnCardsNb = 0;
 	bool endOfTurn = false;
 
 	player->prepare();
@@ -34,9 +36,10 @@ void ShellDemo::playTurn(PlayerContext* player)
 		{
 			case drawCard:
 			{
-				if(_deck->getCardNb() > 0)
+				if(drawnCardsNb < _rules.getMaxNbOfCardsToDrawPerTurn() && _deck->getCardNb() > 0)
 				{
 					player->drawCard(_deck);
+					++drawnCardsNb;
 				}
 				player->printHand();
 				break;
@@ -44,8 +47,10 @@ void ShellDemo::playTurn(PlayerContext* player)
 			case playCard:
 			{
 				player->printHandWithCost();
+
 				if(player->getHandCardNb() > 0)
 				{
+					int index;
 					std::cout << "Select card to play " << std::endl;
 					std::cin >> index;
 					if(index <= player->getHandCardNb())

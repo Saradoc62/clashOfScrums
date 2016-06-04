@@ -5,10 +5,14 @@
 
 int main(int argc, char* argv[])
 {
+	//Load rules
+	std::string rulesXmlPath = std::string(RESOURCES_PATH) + "rules.xml";
+	Rules rules(rulesXmlPath);
+
 	//Load Deck
-	std::string xmlPath = std::string(RESOURCES_PATH) + "cards.xml";
+	std::string cardsXmlPath = std::string(RESOURCES_PATH) + "cards.xml";
 	const int deckSize = 10;
-	Deck deck(xmlPath, deckSize);
+	Deck deck(cardsXmlPath, deckSize);
 
 	//Create players
 	const int nbOfPlayers = 4;
@@ -20,7 +24,7 @@ int main(int argc, char* argv[])
 	}
 
 	//Run demo
-	ShellDemo demo(players, &deck);
+	ShellDemo demo(players, &deck, rules);
 	demo.run();
 
 	return 0;
