@@ -17,13 +17,12 @@ class PlayerContext
 {
 public:
 	PlayerContext();
-	PlayerContext(Deck* deck);
 	~PlayerContext();
 
 	//players methods
 	void prepare();
 	void update();
-	void drawCard();
+	void drawCard(Deck* deck);
 	bool playCard(const int index);
 	void makeFeature(int featureIdx, int creatureIdx);
 
@@ -31,7 +30,6 @@ public:
 	int getMoney() const {return _money;}
 	unsigned int getHandCardNb() const;
 	unsigned int getBoardCardNb() const;
-	unsigned int getDeckCardNb() const;
 	int getBoardCardTypeNb(CardType type) const;
 
 	//print
@@ -48,7 +46,6 @@ private:
 
 	int    _money;
 
-	Deck*  _deck;
 	Board* _board;
 	Hand*  _hand;
 };

@@ -33,14 +33,14 @@ BOOST_AUTO_TEST_CASE(PlayerDrawAndPlayCardMechanism)
 
 	//Create deck and context
 	Deck deck(cards);
-	PlayerContext aCtxt(&deck);
+	PlayerContext aCtxt;
 
 	//Successively draw card and check that player's hand increases correctly 
 	//until deck is empty
 	int i = 0;
 	while(deck.getCardNb() > 0)
 	{
-		aCtxt.drawCard();
+		aCtxt.drawCard(&deck);
 		BOOST_CHECK_EQUAL(aCtxt.getHandCardNb(), ++i);
 	}
 
@@ -84,7 +84,7 @@ BOOST_AUTO_TEST_CASE(PlayerMoney)
 
 	//Create deck and context
 	Deck deck(cards);
-	PlayerContext aCtxt(&deck);
+	PlayerContext aCtxt;
 
 	//Simulate 4 turns
 
@@ -94,7 +94,7 @@ BOOST_AUTO_TEST_CASE(PlayerMoney)
 	BOOST_CHECK_EQUAL(aCtxt.getMoney(), 0);
 
 	//Draw and play feature1 (will bring income for 2 turns and die)
-	aCtxt.drawCard();
+	aCtxt.drawCard(&deck);
 	aCtxt.playCard(0); //feature1 (top card)
 
 	//Turn 1 : Check that player money is 2000 (income from feature1)
@@ -113,7 +113,7 @@ BOOST_AUTO_TEST_CASE(PlayerMoney)
 
 	//Turn 4 : Play creature and checks that player money is 3000
 	aCtxt.prepare();
-	aCtxt.drawCard();
+	aCtxt.drawCard(&deck);
 	aCtxt.playCard(0); //creature1 (top card)
 	BOOST_CHECK_EQUAL(aCtxt.getMoney(), 3000);
 	aCtxt.update();
@@ -144,16 +144,16 @@ BOOST_AUTO_TEST_CASE(PlayerFeatureCompletion)
 
 	//Create deck and context
 	Deck deck(cards);
-	PlayerContext aCtxt(&deck);
+	PlayerContext aCtxt;
 
 	aCtxt.prepare();
 
 	//Draw and play feature1 (top card)
-	aCtxt.drawCard();
+	aCtxt.drawCard(&deck);
 	aCtxt.playCard(0);
 
 	//Draw and play creature1 (top card)
-	aCtxt.drawCard();
+	aCtxt.drawCard(&deck);
 	aCtxt.playCard(0);
 
 	//Initial check
@@ -236,16 +236,16 @@ BOOST_AUTO_TEST_CASE(PlayerFeatureDeadlineCheck)
 
 	//Create deck and context
 	Deck deck(cards);
-	PlayerContext aCtxt(&deck);
+	PlayerContext aCtxt;
 
 	aCtxt.prepare();
 
 	//Draw and play feature1 (top card)
-	aCtxt.drawCard();
+	aCtxt.drawCard(&deck);
 	aCtxt.playCard(0);
 
 	//Draw and play creature1 (top card)
-	aCtxt.drawCard();
+	aCtxt.drawCard(&deck);
 	aCtxt.playCard(0);
 
 	//Initial check

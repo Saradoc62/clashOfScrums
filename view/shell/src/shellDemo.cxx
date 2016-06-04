@@ -5,11 +5,11 @@ ShellDemo::ShellDemo()
 
 }
 
-ShellDemo::ShellDemo(std::vector<PlayerContext*> players) :
+ShellDemo::ShellDemo(std::vector<PlayerContext*> players, Deck* deck) :
 _players(players),
 _keepPlay(true)
 {
-
+	_deck  = deck;
 }
 
 ShellDemo::~ShellDemo()
@@ -34,9 +34,9 @@ void ShellDemo::playTurn(PlayerContext* player)
 		{
 			case drawCard:
 			{
-				if(player->getDeckCardNb() > 0)
+				if(_deck->getCardNb() > 0)
 				{
-					player->drawCard();
+					player->drawCard(_deck);
 				}
 				player->printHand();
 				break;

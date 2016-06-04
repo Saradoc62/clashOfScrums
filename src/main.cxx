@@ -15,12 +15,12 @@ int main(int argc, char* argv[])
 	std::vector<PlayerContext*> players;
 	for(int i = 0; i < nbOfPlayers; ++i)
 	{
-		PlayerContext* player = new PlayerContext(&deck);
+		PlayerContext* player = new PlayerContext();
 		players.push_back(player);
 	}
 
 	//Run demo
-	ShellDemo demo(players);
+	ShellDemo demo(players, &deck);
 	demo.run();
 
 	return 0;

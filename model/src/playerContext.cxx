@@ -5,10 +5,9 @@
 #include <model/feature.hxx>
 #include <model/creature.hxx>
 
-PlayerContext::PlayerContext(Deck* deck)
+PlayerContext::PlayerContext()
 {
 	_money = 0;
-	_deck  = deck;
 	_board = new Board();
 	_hand  = new Hand();
 }
@@ -36,7 +35,8 @@ void PlayerContext::updateMoney(Card* card)
 	if(card->getType().find("Feature") != std::string::npos)
 	{
 		class Feature* feat = dynamic_cast<class Feature*>(card);
-		_money += feat->getIncome();
+		if(feat->getDeadline() > 0)
+			_money += feat->getIncome();
 	}
 	else
 	{
@@ -44,9 +44,9 @@ void PlayerContext::updateMoney(Card* card)
 	}
 }
 
-void PlayerContext::drawCard()
+void PlayerContext::drawCard(Deck* deck)
 {
-	Card* card = _deck->drawNext();
+	Card* card = deck->drawNext();
 	std::cout << "==> Draw Card : " << card->getName() << "\n" << std::endl;
 	_hand->addCard(card);
 }
@@ -102,11 +102,6 @@ unsigned int PlayerContext::getHandCardNb() const
 unsigned int PlayerContext::getBoardCardNb() const
 {
 	return _board->getCardNb();
-}
-
-unsigned int PlayerContext::getDeckCardNb() const
-{
-	return _deck->getCardNb();
 }
 
 int PlayerContext::getBoardCardTypeNb(CardType type) const
