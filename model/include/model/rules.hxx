@@ -11,6 +11,7 @@ public:
 	Rules(Rules const& o);
 	~Rules();
 
+	const int getDeckSize() const {return _deckSize;}
 	const int getMaxNbOfCardsToDrawPerTurn() const {return _maxNbOfCardsToDrawPerTurn;}
 
 private:
@@ -18,6 +19,7 @@ private:
 
 	std::string _xmlPath;
 	int _numberOfDecks;
+	int _deckSize;
 	int _maxNbOfCardsToDrawPerTurn;
 
 };

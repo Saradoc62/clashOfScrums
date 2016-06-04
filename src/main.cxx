@@ -11,7 +11,7 @@ int main(int argc, char* argv[])
 
 	//Load Deck
 	std::string cardsXmlPath = std::string(RESOURCES_PATH) + "cards.xml";
-	const int deckSize = 10;
+	const int deckSize = rules.getDeckSize();
 	Deck deck(cardsXmlPath, deckSize);
 
 	//Create players

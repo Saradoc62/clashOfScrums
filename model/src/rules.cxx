@@ -10,6 +10,7 @@
 Rules::Rules() :
 _xmlPath(""),
 _numberOfDecks(0),
+_deckSize(0),
 _maxNbOfCardsToDrawPerTurn(0)
 {
 
@@ -25,6 +26,7 @@ _xmlPath(xmlPath)
 Rules::Rules(Rules const& o) :
 _xmlPath(o._xmlPath),
 _numberOfDecks(o._numberOfDecks),
+_deckSize(o._deckSize),
 _maxNbOfCardsToDrawPerTurn(o._maxNbOfCardsToDrawPerTurn)
 {
 
@@ -53,6 +55,7 @@ void Rules::init()
 		    pt::read_xml(_xmlPath, tree);
 
 		    _numberOfDecks 				= tree.get<int>("rules.numberOfDecks");
+		    _deckSize					= tree.get<int>("rules.deckSize");
 		    _maxNbOfCardsToDrawPerTurn 	= tree.get<int>("rules.maxNbOfCardsToDrawPerTurn");
 		}
 		catch(std::exception &ex)
