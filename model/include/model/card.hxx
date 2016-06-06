@@ -17,6 +17,7 @@ public:
 	const int getCost() const {return _cost;}
 	const std::string getName() const {return _name;}
 	const virtual std::string getType() const {return typeid(*this).name();}
+	const std::string getFrame() const {return _frame;}
 
 	virtual void applyEffectToBoard(std::vector<Card*> const& cards);
 	virtual void acceptEffect(Effect effect);
@@ -25,6 +26,7 @@ public:
 protected:
 	int _cost;
 	std::string _name;
+	std::string _frame;
 	Effect _effect;
 };
 

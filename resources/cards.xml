@@ -2,29 +2,54 @@
 <cards>
   <card>
     <type>Creature</type>
-    <name>Dev Junior</name>
-    <cost>100</cost>
-    <dev>2</dev>
-    <test>0</test>
+    <name>Senior Dev</name>
+    <frame>SeniorDev.png</frame>
+    <cost>400</cost>
+    <dev>4</dev>
+    <test>1</test>
     <Effect type="NoEffect"/>
   </card>
   <card>
     <type>Creature</type>
     <name>Tester Junior</name>
+    <frame>TesterJunior.png</frame>
     <cost>100</cost>
     <dev>0</dev>
     <test>2</test>
     <Effect type="NoEffect"/>
   </card>
   <card>
-    <type>Spell</type>
-    <name>Freeze</name>
-    <cost>200</cost>
-    <Effect type="NoEffect"/>
-  </card>
+    <type>Creature</type>
+    <name>Portfolio Manager</name>
+    <frame>Portfolio.png</frame>
+    <cost>800</cost>
+    <dev>0</dev>
+    <test>0</test>
+    <Effect type="CostDecrease" occur="Once">
+      <devImpact>0</devImpact>
+      <testImpact>0</testImpact>
+      <costImpact>100</costImpact>
+      <duration>0</duration>/>
+    </Effect>
+  </card> 
+  <card>
+    <type>Creature</type>
+    <name>Scrum Master</name>
+    <frame>ScrumMaster.png</frame>
+    <cost>300</cost>
+    <dev>0</dev>
+    <test>0</test>
+    <Effect type="Buff" occur="Once">
+      <devImpact>1</devImpact>
+      <testImpact>1</testImpact>
+      <costImpact>0</costImpact>      
+      <duration>0</duration>/>
+    </Effect>
+  </card>    
   <card>
     <type>Feature</type>
     <name>3DPrinting</name>
+    <frame>3DPrinting.png</frame>
     <cost>0</cost>
     <income>4000</income>
     <benefits>1000000</benefits>
@@ -34,54 +59,52 @@
     <Effect type="NoEffect"/>
   </card>  
   <card>
-    <type>Feature</type>
-    <name>Cardiac Perfusion</name>
-    <cost>0</cost>
-    <income>3000</income>
-    <benefits>750000</benefits>
-    <devRequired>15</devRequired>
-    <testRequired>12</testRequired>
-    <deadline>4</deadline>
-    <Effect type="NoEffect"/>
-  </card>  
-  <card>
-    <type>Feature</type>
-    <name>CXP</name>
-    <cost>0</cost>
-    <income>1000</income>
-    <benefits>300000</benefits>
-    <devRequired>10</devRequired>
-    <testRequired>10</testRequired>
-    <deadline>3</deadline>
-    <Effect type="NoEffect"/>
-  </card>  
-  <card>    
-    <type>Spell</type>
-    <name>Fire</name>
-    <cost>200</cost>
-    <Effect type="NoEffect"/>
-  </card>
-  <card>
     <type>Spell</type>
     <name>Brainstorm</name>
+    <frame>Brainstorm.png</frame>
     <cost>50</cost>
     <Effect type="Buff" occur="Once"> 
       <devImpact>1</devImpact>
       <testImpact>1</testImpact>
-      <duration>2</duration>
+      <costImpact>0</costImpact>
+      <duration>0</duration>
     </Effect>
   </card>
   <card>
-    <type>Creature</type>
-    <name>Tester</name>
-    <cost>1000</cost>
-    <dev>1</dev>
-    <test>3</test>
-    <Effect type="NoEffect"/>
-  </card>
+    <type>Spell</type>
+    <name>AfterWork</name>
+    <frame>AfterWork.png</frame>
+    <cost>200</cost>
+    <Effect type="Buff" occur="Once"> 
+      <devImpact>1</devImpact>
+      <testImpact>1</testImpact>
+      <costImpact>0</costImpact>      
+      <duration>1</duration>
+    </Effect>
+  </card>  
   <card>
+    <type>Spell</type>
+    <name>Learning</name>
+    <frame>Learning.png</frame>
+    <cost>1000</cost>
+    <Effect type="Buff" occur="Once"> 
+      <devImpact>2</devImpact>
+      <testImpact>2</testImpact>
+      <costImpact>0</costImpact>      
+      <duration>0</duration>
+    </Effect>
+  </card>    
+  <card>
+    <type>Spell</type>
+    <name>Fire</name>
+    <frame>Fired.png</frame>
+    <cost>200</cost>
+    <Effect type="NoEffect"/>
+  </card>  
+  <card>    
     <type>Creature</type>
     <name>Intern</name>
+    <frame>Intern.png</frame>    
     <cost>0</cost>
     <dev>0</dev>
     <test>0</test>
@@ -90,12 +113,14 @@
   <card>
     <type>Creature</type>
     <name>Architect</name>
+    <frame>Architect.png</frame>
     <cost>2000</cost>
     <dev>1</dev>
     <test>0</test>
     <Effect type="Buff" occur="Once">
       <devImpact>1</devImpact>
       <testImpact>0</testImpact>
+      <costImpact>0</costImpact>
       <duration>0</duration>
     </Effect>
   </card>

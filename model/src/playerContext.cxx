@@ -54,7 +54,7 @@ void PlayerContext::drawCard(Deck* deck)
 bool PlayerContext::playCard(const int index)
 {
 	bool status = true;
-	Card* card = _hand->getCard(index);
+	Card* card = _hand->playCard(index);
 	if(_money >= card->getCost())
 	{
 		std::cout << "==> Play Card : " << card->getName() << "\n" << std::endl;

@@ -31,6 +31,7 @@ public:
 	unsigned int getHandCardNb() const;
 	unsigned int getBoardCardNb() const;
 	int getBoardCardTypeNb(CardType type) const;
+	const Hand* getHand() const {return _hand;}
 
 	//print
 	void printActions() const;

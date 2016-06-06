@@ -35,10 +35,15 @@ void Board::addCard(Card* card)
 	}
 }
 
-Card* Board::getCard(const int index)
+const Card* Board::getCard(const int index) const
 {
 	Card* card = _cards[index];
 	return card;
+}
+
+const std::string Board::getCardName(const int index) const
+{
+	return _cards[index]->getName();
 }
 
 //Get occurence <index> of CardType <type> in Board
@@ -167,7 +172,7 @@ void Hand::addCard(Card* card)
 	_cards.push_back(card);
 }
 
-Card* Hand::getCard(const int index)
+Card* Hand::playCard(const int index)
 {
 	Card* card = _cards[index];
 	_cards.erase(_cards.begin() + index);

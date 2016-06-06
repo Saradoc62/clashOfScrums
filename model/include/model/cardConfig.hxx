@@ -104,6 +104,7 @@ struct Effect {
 struct CardAttribute {
 	CardType cardType;
 	std::string name;
+	std::string frame;
 	int cost;
 	int dev;
 	int test;
@@ -117,6 +118,7 @@ struct CardAttribute {
 	CardAttribute()
 	{
 		name = "";
+		frame = "";
 		cost = 0;
 		dev = 0;
 		test = 0;

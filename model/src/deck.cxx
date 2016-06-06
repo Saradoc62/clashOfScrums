@@ -76,6 +76,7 @@ std::vector<Card*> Deck::initCardsFromXml()
 
 		           	attribute.name = card.get<std::string>("name");
 		           	attribute.cost = card.get<int>("cost");
+		           	attribute.frame = factory.getPNGPath() + card.get<std::string>("frame");
 
 		           	if(cardType == Creature)
 		           	{
@@ -100,6 +101,7 @@ std::vector<Card*> Deck::initCardsFromXml()
 		           		attribute.effect.occur = factory.getOccurence(effect.get<std::string>("<xmlattr>.occur"));
 		           		attribute.effect.devImpact = effect.get<int>("devImpact");
 		           		attribute.effect.testImpact = effect.get<int>("testImpact");
+		           		attribute.effect.costImpact = effect.get<int>("costImpact");
 		           		attribute.effect.duration = effect.get<int>("duration");
 		            }
 		            cards.push_back(factory.makeCard(attribute));

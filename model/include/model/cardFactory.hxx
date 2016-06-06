@@ -1,6 +1,7 @@
 #ifndef __CARD_FACTORY_HXX__
 #define __CARD_FACTORY_HXX__
 
+#include <configuration.h>
 #include <model/feature.hxx>
 #include <model/creature.hxx>
 #include <model/spell.hxx>
@@ -8,6 +9,12 @@
 class CardFactory
 {
 public:
+	CardFactory() : 
+	_pngPath(std::string(RESOURCES_PATH) + "PNGs/")
+	{
+	}
+	~CardFactory() {}
+
 	Card* makeCard(CardAttribute attribute)
 	{
 		switch(attribute.cardType)
@@ -21,6 +28,11 @@ public:
 			default:
 				return new class Card(attribute);
 		}
+	}
+
+	const std::string& getPNGPath()
+	{
+		return _pngPath;
 	}
 
 	CardType getCardType(std::string type)
@@ -54,6 +66,9 @@ public:
 		else
 			return Unknown;
 	}	
+
+private:
+	std::string _pngPath;
 };
 
 #endif

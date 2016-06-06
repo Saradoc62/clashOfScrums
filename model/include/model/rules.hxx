@@ -11,6 +11,7 @@ public:
 	Rules(Rules const& o);
 	~Rules();
 
+    const int getDeckNb() const {return _numberOfDecks;}
 	const int getDeckSize() const {return _deckSize;}
 	const int getMaxNbOfCardsToDrawPerTurn() const {return _maxNbOfCardsToDrawPerTurn;}
 
