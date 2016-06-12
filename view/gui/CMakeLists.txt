@@ -1,7 +1,5 @@
 project(clashOfScrums-view-gui)
 
-file(GLOB_RECURSE SOURCES include/*.hxx src/*.cxx src/*.hxx)
-
 find_package(Qt4 REQUIRED)
 if(Qt4_FOUND)
     include_directories(${QT_INCLUDE_DIRS})
@@ -12,6 +10,8 @@ if(Qt4_FOUND)
 else()
     message("Error ! Need Qt to compile ${PROJECT_NAME}")
 endif()
+
+file(GLOB_RECURSE SOURCES include/*.hxx src/*.cxx src/*.hxx)
 
 #add clashOfScrums-model's include directory
 include_directories(${clashOfScrums-model_INCLUDE_DIRS})

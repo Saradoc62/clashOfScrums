@@ -5,9 +5,11 @@
 #include <model/feature.hxx>
 #include <model/creature.hxx>
 
-PlayerContext::PlayerContext()
+PlayerContext::PlayerContext() :
+_money(0),
+_drawnCardNb(0),
+_verbose(false)
 {
-	_money = 0;
 	_board = new Board();
 	_hand  = new Hand();
 }
@@ -23,6 +25,7 @@ void PlayerContext::prepare()
 	{
 		updateMoney(card);
 	}
+	_drawnCardNb = 0;
 }
 
 void PlayerContext::update()
@@ -47,24 +50,25 @@ void PlayerContext::updateMoney(Card* card)
 void PlayerContext::drawCard(Deck* deck)
 {
 	Card* card = deck->drawNext();
-	std::cout << "==> Draw Card : " << card->getName() << "\n" << std::endl;
+	if(_verbose) std::cout << "==> Draw Card : " << card->getName() << "\n" << std::endl;
 	_hand->addCard(card);
+	++_drawnCardNb;
 }
 
 bool PlayerContext::playCard(const int index)
 {
 	bool status = true;
-	Card* card = _hand->playCard(index);
+	Card* card = _hand->getCard(index);
 	if(_money >= card->getCost())
 	{
-		std::cout << "==> Play Card : " << card->getName() << "\n" << std::endl;
+		if(_verbose) std::cout << "==> Play Card : " << card->getName() << "\n" << std::endl;
+		_hand->removeCard(index);
 		_board->addCard(card);
 		updateMoney(card);
 	}
 	else
 	{
-		std::cout << "Not enough money to play : " << card->getName() << "\n" << std::endl;
-		_hand->addCard(card);
+		if(_verbose) std::cout << "Not enough money to play : " << card->getName() << "\n" << std::endl;
 		status = false;
 	}
 	return status;
@@ -113,8 +117,6 @@ void PlayerContext::printInfo() const
 {
 	std::cout << "* PRINT PLAYER CONTEXT *" << std::endl;
 	std::cout << "Money = " << _money << "\n" << std::endl;
-	//_hand->printInfo();
-	//_board->printInfo();
 }
 
 void PlayerContext::printHand() const

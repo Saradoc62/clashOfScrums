@@ -35,7 +35,7 @@ void Board::addCard(Card* card)
 	}
 }
 
-const Card* Board::getCard(const int index) const
+Card* Board::getCard(const int index) const
 {
 	Card* card = _cards[index];
 	return card;
@@ -172,11 +172,9 @@ void Hand::addCard(Card* card)
 	_cards.push_back(card);
 }
 
-Card* Hand::playCard(const int index)
+void Hand::removeCard(const int index)
 {
-	Card* card = _cards[index];
 	_cards.erase(_cards.begin() + index);
-	return card;
 }
 
 void Hand::printInfo() const

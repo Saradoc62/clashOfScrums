@@ -13,7 +13,7 @@ public:
 	virtual ~Board();
 
 	virtual void addCard(Card* card);
-	virtual const Card* getCard(const int index) const;
+	virtual Card* getCard(const int index) const;
 	virtual const std::string getCardName(const int index) const;
 	virtual Card* getCardType(CardType type, const int index);
 	virtual std::vector<Card*> getCards();
@@ -40,7 +40,7 @@ public:
 	virtual ~Hand();
 
 	virtual void addCard(Card* card);
-		Card* playCard(const int index);
+	void removeCard(const int index);
 
 	virtual void printInfo() const;
 	void printWithCost() const;

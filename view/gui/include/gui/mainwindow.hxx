@@ -2,11 +2,12 @@
 #define MAINWINDOW_HXX
 
 #include <QMainWindow>
-#include <QtGui/QLabel>
 
 #include <model/rules.hxx>
 #include <model/playerContext.hxx>
 #include <model/deck.hxx>
+
+class CardLabel;
 
 namespace Ui {
 class MainWindow;
@@ -25,17 +26,24 @@ public:
 
 private slots:
     void drawCard();
+    void playCard();
+    void endTurnAndSetNextPlayer();
 
 private:
+	PlayerContext* getCurrentPlayer() const {return _currentPlayer;}
+
 	void cleanLabels();
+	void createLabel(const Card* card);
 	void printPlayerHand(PlayerContext* player);
 
 	//graphics
     Ui::MainWindow *ui;
-    std::vector<QLabel*> _cardLabels;
+    std::vector<CardLabel*> _cardLabels;
 
     //models
+    int _internalTurnCount;
     std::vector<PlayerContext*> _players;
+    PlayerContext* _currentPlayer;
 	Deck* _deck;
 	Rules _rules;
 };

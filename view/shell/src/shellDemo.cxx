@@ -1,3 +1,5 @@
+#include <boost/foreach.hpp>
+
 #include <shell/shellDemo.hxx>
 
 ShellDemo::ShellDemo()
@@ -11,6 +13,10 @@ _keepPlay(true),
 _rules(rules)
 {
 	_deck = deck;
+	BOOST_FOREACH(PlayerContext* const& player, _players)
+	{
+		player->setVerbose(true);
+	}
 }
 
 ShellDemo::~ShellDemo()

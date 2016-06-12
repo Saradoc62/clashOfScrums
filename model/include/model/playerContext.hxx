@@ -26,8 +26,10 @@ public:
 	bool playCard(const int index);
 	void makeFeature(int featureIdx, int creatureIdx);
 
-	//getters
+	//getters & setters
+	void setVerbose(bool mode) {_verbose = mode;}
 	int getMoney() const {return _money;}
+	int getDrawnCardNb() const {return _drawnCardNb;}
 	unsigned int getHandCardNb() const;
 	unsigned int getBoardCardNb() const;
 	int getBoardCardTypeNb(CardType type) const;
@@ -46,6 +48,8 @@ private:
 	void updateMoney(Card* card);
 
 	int    _money;
+	int    _drawnCardNb;
+	bool   _verbose;
 
 	Board* _board;
 	Hand*  _hand;

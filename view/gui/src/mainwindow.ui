@@ -24,7 +24,20 @@
      </rect>
     </property>
     <property name="text">
-     <string>DrawCard</string>
+     <string>Draw Card</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="endTurnButton">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>50</y>
+      <width>114</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>End Turn</string>
     </property>
    </widget>
   </widget>
