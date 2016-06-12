@@ -7,6 +7,12 @@
 #include "ui_mainwindow.h"
 #include <gui/cardLabel.hxx>
 
+enum LabelPosition
+{
+	top = 0, 
+	bottom = 1
+};
+
 MainWindow::MainWindow(std::vector<PlayerContext*> players, 
     				   Deck* deck, 
     				   Rules rules,
@@ -32,35 +38,62 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::cleanLabels()
+void MainWindow::cleanHandLabels()
 {
-	for(unsigned int i = 0; i < _cardLabels.size(); ++i)
+	for(unsigned int i = 0; i < _handCardLabels.size(); ++i)
 	{
-		_cardLabels[i]->close();
+		_handCardLabels[i]->close();
 	}
-	_cardLabels.clear();
-	_cardLabels.resize(0);
+	_handCardLabels.clear();
+	_handCardLabels.resize(0);
 }
 
-void MainWindow::createLabel(const Card* card)
+void MainWindow::cleanBoardLabels()
 {
-	const int pos = _cardLabels.size();
+	for(unsigned int i = 0; i < _boardCardLabels.size(); ++i)
+	{
+		_boardCardLabels[i]->close();
+	}
+	_boardCardLabels.clear();
+	_boardCardLabels.resize(0);
+}
+
+CardLabel* MainWindow::createLabel(const Card* card, const int xIndex, const int yIndex)
+{
 	CardLabel* cardLabel = new CardLabel(card, ui->centralwidget);
-	cardLabel->setPosition(pos);
+	cardLabel->setPosition(xIndex, yIndex);
 	cardLabel->show();
-	connect(cardLabel, SIGNAL (cardLabelClickedSignal()), this, SLOT (playCard()));
-	_cardLabels.push_back(cardLabel);
+	return cardLabel;
 }
 
 void MainWindow::printPlayerHand(PlayerContext* player)
 {
-	cleanLabels();
+	cleanHandLabels();
 
+	const int yIndex = bottom;
 	const Hand* hand = player->getHand();
 
 	for(unsigned int i = 0; i < player->getHandCardNb(); ++i)
 	{
-		createLabel(hand->getCard(i));
+		const int xIndex = i;
+		CardLabel* cardLabel = createLabel(hand->getCard(i), xIndex, yIndex);
+		connect(cardLabel, SIGNAL (cardLabelClickedSignal()), this, SLOT (playCard()));
+		_handCardLabels.push_back(cardLabel);
+	}	
+}
+
+void MainWindow::printPlayerBoard(PlayerContext* player)
+{
+	cleanBoardLabels();
+
+	const int yIndex = top;
+	const Board* board = player->getBoard();
+
+	for(unsigned int i = 0; i < player->getBoardCardNb(); ++i)
+	{
+		const int xIndex = i;
+		CardLabel* cardLabel = createLabel(board->getCard(i), xIndex, yIndex);
+		_boardCardLabels.push_back(cardLabel);
 	}	
 }
 
@@ -73,6 +106,7 @@ void MainWindow::endTurnAndSetNextPlayer()
 
 	_currentPlayer->prepare();
 	printPlayerHand(_currentPlayer);
+	printPlayerBoard(_currentPlayer);
 }
 
 void MainWindow::drawCard()
@@ -89,14 +123,14 @@ void MainWindow::playCard()
 {
 	PlayerContext* player = getCurrentPlayer();
 
-	for(unsigned int i = 0; i < _cardLabels.size(); ++i)
+	for(unsigned int i = 0; i < _handCardLabels.size(); ++i)
 	{
-		if(_cardLabels[i]->isSelected())
+		if(_handCardLabels[i]->isSelected())
 		{
 			player->playCard(i);
 			break;
 		}
 	}
 	printPlayerHand(player);
-	//printPlayerBoard(player); 
+	printPlayerBoard(player); 
 }

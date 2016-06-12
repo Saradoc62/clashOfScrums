@@ -16,7 +16,7 @@ public:
     //getters
     const bool isSelected() const {return _isSelected;}
 
-    void setPosition(const int pos);
+    void setPosition(const int xIndex, const int yIndex);
 
 signals:
 	void cardLabelClickedSignal();	

@@ -28,11 +28,13 @@ public:
 
 	//getters & setters
 	void setVerbose(bool mode) {_verbose = mode;}
+	
 	int getMoney() const {return _money;}
 	int getDrawnCardNb() const {return _drawnCardNb;}
 	unsigned int getHandCardNb() const;
 	unsigned int getBoardCardNb() const;
 	int getBoardCardTypeNb(CardType type) const;
+	const Board* getBoard() const {return _board;}
 	const Hand* getHand() const {return _hand;}
 
 	//print

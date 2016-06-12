@@ -32,13 +32,16 @@ private slots:
 private:
 	PlayerContext* getCurrentPlayer() const {return _currentPlayer;}
 
-	void cleanLabels();
-	void createLabel(const Card* card);
+	void cleanHandLabels();
+    void cleanBoardLabels();
+    CardLabel* createLabel(const Card* card, const int xIndex, const int yIndex);
 	void printPlayerHand(PlayerContext* player);
+    void printPlayerBoard(PlayerContext* player);
 
 	//graphics
     Ui::MainWindow *ui;
-    std::vector<CardLabel*> _cardLabels;
+    std::vector<CardLabel*> _handCardLabels;
+    std::vector<CardLabel*> _boardCardLabels;
 
     //models
     int _internalTurnCount;
