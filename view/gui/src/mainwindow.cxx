@@ -27,6 +27,7 @@ MainWindow::MainWindow(std::vector<PlayerContext*> players,
     ui->setupUi(this);
 
     _currentPlayer = _players.front();
+    printPlayerMoney(_currentPlayer);
 
     //signal and slots
     connect(ui->drawCardButton, SIGNAL (released()), this, SLOT (drawCard()));
@@ -97,6 +98,19 @@ void MainWindow::printPlayerBoard(PlayerContext* player)
 	}	
 }
 
+void MainWindow::printPlayerMoney(PlayerContext* player)
+{
+	std::string moneyText = "Money : " + std::to_string(player->getMoney());
+    ui->moneyLabel->setText(QString(moneyText.c_str()));
+}
+
+void MainWindow::printPlayerContext(PlayerContext* player)
+{
+	printPlayerHand(player);
+	printPlayerBoard(player); 
+	printPlayerMoney(player);
+}
+
 void MainWindow::endTurnAndSetNextPlayer()
 {
 	_currentPlayer->update();
@@ -105,8 +119,7 @@ void MainWindow::endTurnAndSetNextPlayer()
 	_currentPlayer = _players[next];
 
 	_currentPlayer->prepare();
-	printPlayerHand(_currentPlayer);
-	printPlayerBoard(_currentPlayer);
+	printPlayerContext(_currentPlayer);
 }
 
 void MainWindow::drawCard()
@@ -116,7 +129,7 @@ void MainWindow::drawCard()
 	{
 		player->drawCard(_deck);
 	}
-	printPlayerHand(player);
+	printPlayerContext(player);
 }
 
 void MainWindow::playCard()
@@ -131,6 +144,5 @@ void MainWindow::playCard()
 			break;
 		}
 	}
-	printPlayerHand(player);
-	printPlayerBoard(player); 
+	printPlayerContext(player);
 }

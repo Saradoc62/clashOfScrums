@@ -125,8 +125,16 @@ void Deck::randomizeCards()
 		std::random_device random_device;
 		std::mt19937 engine(random_device());
 		std::uniform_int_distribution<int> dist(0, cards.size() - 1);
-	
-		_deckCards[i] = cards[dist(engine)];
+
+		Card* card = cards[dist(engine)];
+
+		//Duplicate cards
+		if(card->getType().find("Feature") != std::string::npos)
+			_deckCards[i] = new class Feature(*dynamic_cast<class Feature*>(card));
+		else if(card->getType().find("Creature") != std::string::npos)
+			_deckCards[i] = new class Creature(*dynamic_cast<class Creature*>(card));
+		else if(card->getType().find("Spell") != std::string::npos)
+			_deckCards[i] = new class Spell(*dynamic_cast<class Spell*>(card));
 	}
 }
 

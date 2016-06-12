@@ -37,6 +37,8 @@ private:
     CardLabel* createLabel(const Card* card, const int xIndex, const int yIndex);
 	void printPlayerHand(PlayerContext* player);
     void printPlayerBoard(PlayerContext* player);
+    void printPlayerMoney(PlayerContext* player);
+    void printPlayerContext(PlayerContext* player);
 
 	//graphics
     Ui::MainWindow *ui;

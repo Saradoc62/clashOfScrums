@@ -91,6 +91,7 @@ void Board::update()
 			feat->update();
 			if(feat->getDeadline() == 0 && !feat->isCompleted())
 			{
+				delete feat;
 				//remove uncompleted features from board if deadline is reached
 				_cards.erase(_cards.begin() + i);
 			}

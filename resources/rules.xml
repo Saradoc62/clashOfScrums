@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <rules>
   <numberOfDecks>1</numberOfDecks>
-  <deckSize>10</deckSize>
+  <deckSize>20</deckSize>
   <maxNbOfCardsToDrawPerTurn>3</maxNbOfCardsToDrawPerTurn>
 </rules>
