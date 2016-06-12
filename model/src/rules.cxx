@@ -11,7 +11,8 @@ Rules::Rules() :
 _xmlPath(""),
 _numberOfDecks(0),
 _deckSize(0),
-_maxNbOfCardsToDrawPerTurn(0)
+_maxNbOfCardsToDrawPerTurn(0),
+_maxNbOfCardInHand(0)
 {
 
 }
@@ -27,7 +28,8 @@ Rules::Rules(Rules const& o) :
 _xmlPath(o._xmlPath),
 _numberOfDecks(o._numberOfDecks),
 _deckSize(o._deckSize),
-_maxNbOfCardsToDrawPerTurn(o._maxNbOfCardsToDrawPerTurn)
+_maxNbOfCardsToDrawPerTurn(o._maxNbOfCardsToDrawPerTurn),
+_maxNbOfCardInHand(o._maxNbOfCardInHand)
 {
 
 }
@@ -57,6 +59,7 @@ void Rules::init()
 		    _numberOfDecks 				= tree.get<int>("rules.numberOfDecks");
 		    _deckSize					= tree.get<int>("rules.deckSize");
 		    _maxNbOfCardsToDrawPerTurn 	= tree.get<int>("rules.maxNbOfCardsToDrawPerTurn");
+		    _maxNbOfCardInHand			= tree.get<int>("rules.maxNbOfCardInHand");
 		}
 		catch(std::exception &ex)
 		{

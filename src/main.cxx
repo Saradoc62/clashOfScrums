@@ -29,7 +29,7 @@ int main(int argc, char* argv[])
 	Deck deck(cardsXmlPath, deckSize);
 
 	//Create players
-	const int nbOfPlayers = 2;
+	const int nbOfPlayers = 4;
 	std::vector<PlayerContext*> players;
 	for(int i = 0; i < nbOfPlayers; ++i)
 	{

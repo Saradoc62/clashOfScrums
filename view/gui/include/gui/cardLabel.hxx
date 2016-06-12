@@ -28,10 +28,16 @@ protected:
 	 bool event(QEvent *myEvent);
 
 private:
-    void fillCardLabel(const Card* card);
+    void fillCardLabel();
+    void hoverEnter();
+    void hoverLeave();
+    void hoverMove();
 
+    const Card* _card;
+    QPixmap _pix;
+    int _xPos;
+    int _yPos;
     bool _isSelected;
-
 };
 
 #endif //CARDLABEL_HXX

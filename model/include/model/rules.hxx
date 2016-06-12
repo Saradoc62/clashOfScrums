@@ -14,6 +14,7 @@ public:
     const int getDeckNb() const {return _numberOfDecks;}
 	const int getDeckSize() const {return _deckSize;}
 	const int getMaxNbOfCardsToDrawPerTurn() const {return _maxNbOfCardsToDrawPerTurn;}
+	const int getMaxNbOfCardInHand() const {return _maxNbOfCardInHand;}
 
 private:
 	void init();
@@ -22,6 +23,7 @@ private:
 	int _numberOfDecks;
 	int _deckSize;
 	int _maxNbOfCardsToDrawPerTurn;
+	int _maxNbOfCardInHand;
 
 };
 

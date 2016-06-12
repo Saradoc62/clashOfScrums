@@ -30,7 +30,10 @@ private slots:
     void endTurnAndSetNextPlayer();
 
 private:
+    void setBackGround();
+
 	PlayerContext* getCurrentPlayer() const {return _currentPlayer;}
+    void updatePlayerLabel(std::string const& name);
 
 	void cleanHandLabels();
     void cleanBoardLabels();
@@ -47,6 +50,7 @@ private:
 
     //models
     int _internalTurnCount;
+    std::string _imgPath;
     std::vector<PlayerContext*> _players;
     PlayerContext* _currentPlayer;
 	Deck* _deck;

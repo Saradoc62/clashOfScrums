@@ -18,6 +18,7 @@ MainWindow::MainWindow(std::vector<PlayerContext*> players,
     				   Rules rules,
     				   QWidget *parent) :
 	_internalTurnCount(0),
+	_imgPath(std::string(RESOURCES_PATH) + "Icons/"),
 	_players(players),
 	_deck(deck),
 	_rules(rules),
@@ -25,6 +26,7 @@ MainWindow::MainWindow(std::vector<PlayerContext*> players,
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    setBackGround();
 
     _currentPlayer = _players.front();
     printPlayerMoney(_currentPlayer);
@@ -37,6 +39,16 @@ MainWindow::MainWindow(std::vector<PlayerContext*> players,
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::setBackGround()
+{
+	const std::string bgPath = _imgPath + "Board.jpeg";
+    QPixmap background(bgPath.c_str());
+    background = background.scaled(this->size(), Qt::IgnoreAspectRatio);
+    QPalette palette;
+    palette.setBrush(QPalette::Background, background);
+    this->setPalette(palette);
 }
 
 void MainWindow::cleanHandLabels()
@@ -104,6 +116,12 @@ void MainWindow::printPlayerMoney(PlayerContext* player)
     ui->moneyLabel->setText(QString(moneyText.c_str()));
 }
 
+void MainWindow::updatePlayerLabel(std::string const& name)
+{
+	const std::string playerName = "Player " + name;
+    ui->playerLabel->setText(QString(playerName.c_str()));
+}
+
 void MainWindow::printPlayerContext(PlayerContext* player)
 {
 	printPlayerHand(player);
@@ -117,6 +135,7 @@ void MainWindow::endTurnAndSetNextPlayer()
 
 	const int next = ++_internalTurnCount % _players.size();
 	_currentPlayer = _players[next];
+	updatePlayerLabel(std::to_string(next+1));
 
 	_currentPlayer->prepare();
 	printPlayerContext(_currentPlayer);
@@ -125,7 +144,9 @@ void MainWindow::endTurnAndSetNextPlayer()
 void MainWindow::drawCard()
 {
 	PlayerContext* player = getCurrentPlayer();
-	if(player->getDrawnCardNb() < _rules.getMaxNbOfCardsToDrawPerTurn() && _deck->getCardNb() > 0)
+	if( _deck->getCardNb() > 0
+		&& player->getDrawnCardNb() < _rules.getMaxNbOfCardsToDrawPerTurn()
+		&& player->getHandCardNb() < _rules.getMaxNbOfCardInHand() )
 	{
 		player->drawCard(_deck);
 	}
