@@ -17,6 +17,8 @@ public:
 	Card* drawNext();
 	const int getCardNb() const {return _deckCards.size();}
 
+	void setVerbose(const bool mode) {_verbose = mode;}
+
 	void printInfo() const;
 	void print() const;
 
@@ -27,6 +29,7 @@ private:
 
 	std::string _xmlPath;
 	int _max;
+	bool _verbose;
 	std::vector<Card*> _deckCards;
 };
 

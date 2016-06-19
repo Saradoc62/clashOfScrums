@@ -12,7 +12,8 @@ _xmlPath(""),
 _numberOfDecks(0),
 _deckSize(0),
 _maxNbOfCardsToDrawPerTurn(0),
-_maxNbOfCardInHand(0)
+_maxNbOfCardInHand(0),
+_verbose(false)
 {
 
 }
@@ -20,7 +21,7 @@ _maxNbOfCardInHand(0)
 Rules::Rules(std::string const& xmlPath) :
 _xmlPath(xmlPath)
 {
-	std::cout << "Loading rules from XML path : " << _xmlPath << "\n" << std::endl;
+	if(_verbose) std::cout << "Loading rules from XML path : " << _xmlPath << "\n" << std::endl;
 	init();
 }
 

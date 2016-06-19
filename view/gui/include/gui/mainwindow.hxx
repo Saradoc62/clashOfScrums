@@ -7,7 +7,7 @@
 #include <model/playerContext.hxx>
 #include <model/deck.hxx>
 
-class CardLabel;
+class CardWidget;
 
 namespace Ui {
 class MainWindow;
@@ -35,9 +35,9 @@ private:
 	PlayerContext* getCurrentPlayer() const {return _currentPlayer;}
     void updatePlayerLabel(std::string const& name);
 
-	void cleanHandLabels();
-    void cleanBoardLabels();
-    CardLabel* createLabel(const Card* card, const int xIndex, const int yIndex);
+	void cleanHandWidgets();
+    void cleanBoardWidgets();
+    CardWidget* createWidget(const Card* card, const int xIndex, const int yIndex);
 	void printPlayerHand(PlayerContext* player);
     void printPlayerBoard(PlayerContext* player);
     void printPlayerMoney(PlayerContext* player);
@@ -45,8 +45,8 @@ private:
 
 	//graphics
     Ui::MainWindow *ui;
-    std::vector<CardLabel*> _handCardLabels;
-    std::vector<CardLabel*> _boardCardLabels;
+    std::vector<CardWidget*> _handCardWidgets;
+    std::vector<CardWidget*> _boardCardWidgets;
 
     //models
     int _internalTurnCount;

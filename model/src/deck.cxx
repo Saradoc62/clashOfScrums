@@ -12,7 +12,8 @@
 
 Deck::Deck() : 
 _xmlPath(""),
-_max(0)
+_max(0),
+_verbose(false)
 {
 
 }
@@ -21,7 +22,7 @@ Deck::Deck(std::string& path, int max) :
 _xmlPath(path), 
 _max(max)
 {
-	std::cout << "Building deck from XML path : " << _xmlPath << "\n" << std::endl; 
+	if(_verbose) std::cout << "Building deck from XML path : " << _xmlPath << "\n" << std::endl; 
 	init();
 }
 

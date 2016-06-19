@@ -5,7 +5,7 @@
 #include <configuration.h>
 #include "gui/mainwindow.hxx"
 #include "ui_mainwindow.h"
-#include <gui/cardLabel.hxx>
+#include <gui/cardWidget.hxx>
 
 enum LabelPosition
 {
@@ -51,37 +51,37 @@ void MainWindow::setBackGround()
     this->setPalette(palette);
 }
 
-void MainWindow::cleanHandLabels()
+void MainWindow::cleanHandWidgets()
 {
-	for(unsigned int i = 0; i < _handCardLabels.size(); ++i)
+	for(unsigned int i = 0; i < _handCardWidgets.size(); ++i)
 	{
-		_handCardLabels[i]->close();
+		_handCardWidgets[i]->close();
 	}
-	_handCardLabels.clear();
-	_handCardLabels.resize(0);
+	_handCardWidgets.clear();
+	_handCardWidgets.resize(0);
 }
 
-void MainWindow::cleanBoardLabels()
+void MainWindow::cleanBoardWidgets()
 {
-	for(unsigned int i = 0; i < _boardCardLabels.size(); ++i)
+	for(unsigned int i = 0; i < _boardCardWidgets.size(); ++i)
 	{
-		_boardCardLabels[i]->close();
+		_boardCardWidgets[i]->close();
 	}
-	_boardCardLabels.clear();
-	_boardCardLabels.resize(0);
+	_boardCardWidgets.clear();
+	_boardCardWidgets.resize(0);
 }
 
-CardLabel* MainWindow::createLabel(const Card* card, const int xIndex, const int yIndex)
+CardWidget* MainWindow::createWidget(const Card* card, const int xIndex, const int yIndex)
 {
-	CardLabel* cardLabel = new CardLabel(card, ui->centralwidget);
-	cardLabel->setPosition(xIndex, yIndex);
-	cardLabel->show();
-	return cardLabel;
+	CardWidget* cardWidget = new CardWidget(card, ui->centralwidget);
+	cardWidget->setPosition(xIndex, yIndex);
+	cardWidget->show();
+	return cardWidget;
 }
 
 void MainWindow::printPlayerHand(PlayerContext* player)
 {
-	cleanHandLabels();
+	cleanHandWidgets();
 
 	const int yIndex = bottom;
 	const Hand* hand = player->getHand();
@@ -89,15 +89,15 @@ void MainWindow::printPlayerHand(PlayerContext* player)
 	for(unsigned int i = 0; i < player->getHandCardNb(); ++i)
 	{
 		const int xIndex = i;
-		CardLabel* cardLabel = createLabel(hand->getCard(i), xIndex, yIndex);
-		connect(cardLabel, SIGNAL (cardLabelClickedSignal()), this, SLOT (playCard()));
-		_handCardLabels.push_back(cardLabel);
+		CardWidget* cardWidget = createWidget(hand->getCard(i), xIndex, yIndex);
+		connect(cardWidget, SIGNAL (cardWidgetClickedSignal()), this, SLOT (playCard()));
+		_handCardWidgets.push_back(cardWidget);
 	}	
 }
 
 void MainWindow::printPlayerBoard(PlayerContext* player)
 {
-	cleanBoardLabels();
+	cleanBoardWidgets();
 
 	const int yIndex = top;
 	const Board* board = player->getBoard();
@@ -105,8 +105,8 @@ void MainWindow::printPlayerBoard(PlayerContext* player)
 	for(unsigned int i = 0; i < player->getBoardCardNb(); ++i)
 	{
 		const int xIndex = i;
-		CardLabel* cardLabel = createLabel(board->getCard(i), xIndex, yIndex);
-		_boardCardLabels.push_back(cardLabel);
+		CardWidget* cardWidget = createWidget(board->getCard(i), xIndex, yIndex);
+		_boardCardWidgets.push_back(cardWidget);
 	}	
 }
 
@@ -157,13 +157,15 @@ void MainWindow::playCard()
 {
 	PlayerContext* player = getCurrentPlayer();
 
-	for(unsigned int i = 0; i < _handCardLabels.size(); ++i)
+	for(unsigned int i = 0; i < _handCardWidgets.size(); ++i)
 	{
-		if(_handCardLabels[i]->isSelected())
+		if(_handCardWidgets[i]->isSelected())
 		{
-			player->playCard(i);
+			if(player->playCard(i))
+			{
+				printPlayerContext(player);
+			}
 			break;
 		}
 	}
-	printPlayerContext(player);
 }

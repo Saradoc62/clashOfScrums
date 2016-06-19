@@ -82,6 +82,7 @@ struct Effect {
 		type = NoEffect;
 		occur = Unknown;
 		alreadyApplied = false;
+		costImpact = 0;
 		devImpact = 0;
 		testImpact = 0;
 		duration = 0;

@@ -11,6 +11,8 @@ public:
 	Rules(Rules const& o);
 	~Rules();
 
+	void setVerbose(const bool mode) {_verbose = mode;}
+
     const int getDeckNb() const {return _numberOfDecks;}
 	const int getDeckSize() const {return _deckSize;}
 	const int getMaxNbOfCardsToDrawPerTurn() const {return _maxNbOfCardsToDrawPerTurn;}
@@ -24,6 +26,7 @@ private:
 	int _deckSize;
 	int _maxNbOfCardsToDrawPerTurn;
 	int _maxNbOfCardInHand;
+	bool _verbose;
 
 };
 

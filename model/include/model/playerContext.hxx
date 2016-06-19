@@ -27,8 +27,8 @@ public:
 	void makeFeature(int featureIdx, int creatureIdx);
 
 	//getters & setters
-	void setVerbose(bool mode) {_verbose = mode;}
-	
+	void setVerbose(const bool mode) {_verbose = mode;}
+
 	int getMoney() const {return _money;}
 	int getDrawnCardNb() const {return _drawnCardNb;}
 	unsigned int getHandCardNb() const;
