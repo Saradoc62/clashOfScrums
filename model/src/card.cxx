@@ -65,8 +65,11 @@ void Card::acceptEffect(Effect effect)
 		case NoEffect:
 			break;
 		case CostDecrease:
+		{
 			_cost -= effect.costImpact;
+			if(_cost < 0) _cost = 0;
 			break;
+		}
 		default:
 			break;
 	}

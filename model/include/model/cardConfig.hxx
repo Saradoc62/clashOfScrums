@@ -5,10 +5,10 @@
 #include <iostream>
 
 enum CardType {
-	None,
-	Feature,
-	Creature,
-	Spell
+	NoneType,
+	FeatureType,
+	CreatureType,
+	SpellType
 };
 
 enum EffectType {
@@ -28,11 +28,11 @@ namespace {
 	{
 		switch(type)
 		{
-			case Feature:
+			case FeatureType:
 				return "Feature";
-			case Creature:
+			case CreatureType:
 				return "Creature";
-			case Spell:
+			case SpellType:
 				return "Spell";
 			default:
 				return "None";		
@@ -118,6 +118,7 @@ struct CardAttribute {
 
 	CardAttribute()
 	{
+		cardType = NoneType;
 		name = "";
 		frame = "";
 		cost = 0;

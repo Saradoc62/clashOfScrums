@@ -7,7 +7,7 @@
 #include <model/playerContext.hxx>
 #include <model/deck.hxx>
 
-class CardWidget;
+#include <gui/cardWidget.hxx>
 
 namespace Ui {
 class MainWindow;
@@ -27,6 +27,7 @@ public:
 private slots:
     void drawCard();
     void playCard();
+    void drawHand();
     void endTurnAndSetNextPlayer();
 
 private:
@@ -37,7 +38,7 @@ private:
 
 	void cleanHandWidgets();
     void cleanBoardWidgets();
-    CardWidget* createWidget(const Card* card, const int xIndex, const int yIndex);
+    CardWidget* createWidget(const Card* card, const int xIndex, const LabelLocation location);
 	void printPlayerHand(PlayerContext* player);
     void printPlayerBoard(PlayerContext* player);
     void printPlayerMoney(PlayerContext* player);

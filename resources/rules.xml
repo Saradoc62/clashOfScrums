@@ -3,5 +3,5 @@
   <numberOfDecks>1</numberOfDecks>
   <deckSize>20</deckSize>
   <maxNbOfCardsToDrawPerTurn>3</maxNbOfCardsToDrawPerTurn>
-  <maxNbOfCardInHand>4</maxNbOfCardInHand>
+  <maxNbOfCardInHand>10</maxNbOfCardInHand>
 </rules>

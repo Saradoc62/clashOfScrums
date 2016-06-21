@@ -46,7 +46,7 @@ void Feature::update()
 	_deadline -= 1;
 }
 
-void Feature::acceptCreature(class Creature* creature)
+void Feature::acceptCreature(Creature* creature)
 {
 	if(_deadline > 0)
 	{

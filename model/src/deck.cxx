@@ -79,12 +79,12 @@ std::vector<Card*> Deck::initCardsFromXml()
 		           	attribute.cost = card.get<int>("cost");
 		           	attribute.frame = factory.getPNGPath() + card.get<std::string>("frame");
 
-		           	if(cardType == Creature)
+		           	if(cardType == CreatureType)
 		           	{
 		           		attribute.dev = card.get<int>("dev");
 		           		attribute.test = card.get<int>("test");
 		           	}
-		           	else if (cardType == Feature)
+		           	else if (cardType == FeatureType)
 		           	{
 		           		attribute.income = card.get<int>("income");
 		           		attribute.benefits = card.get<int>("benefits");
@@ -131,11 +131,11 @@ void Deck::randomizeCards()
 
 		//Duplicate cards
 		if(card->getType().find("Feature") != std::string::npos)
-			_deckCards[i] = new class Feature(*dynamic_cast<class Feature*>(card));
+			_deckCards[i] = new Feature(*dynamic_cast<Feature*>(card));
 		else if(card->getType().find("Creature") != std::string::npos)
-			_deckCards[i] = new class Creature(*dynamic_cast<class Creature*>(card));
+			_deckCards[i] = new Creature(*dynamic_cast<Creature*>(card));
 		else if(card->getType().find("Spell") != std::string::npos)
-			_deckCards[i] = new class Spell(*dynamic_cast<class Spell*>(card));
+			_deckCards[i] = new Spell(*dynamic_cast<Spell*>(card));
 	}
 }
 

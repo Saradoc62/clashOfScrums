@@ -80,7 +80,8 @@ void ShellDemo::playTurn(PlayerContext* player)
 				std::cout << "Select a creature " << std::endl;
 				std::cin >> creatureIdx;
 
-				if(featureIdx <= player->getBoardCardTypeNb(Feature) && creatureIdx <= player->getBoardCardTypeNb(Creature))
+				if( featureIdx <= player->getBoardCardTypeNb(FeatureType) 
+					&& creatureIdx <= player->getBoardCardTypeNb(CreatureType) )
 				{
 					player->makeFeature(featureIdx, creatureIdx);
 				}

@@ -7,11 +7,6 @@
 #include "ui_mainwindow.h"
 #include <gui/cardWidget.hxx>
 
-enum LabelPosition
-{
-	top = 0, 
-	bottom = 1
-};
 
 MainWindow::MainWindow(std::vector<PlayerContext*> players, 
     				   Deck* deck, 
@@ -71,10 +66,10 @@ void MainWindow::cleanBoardWidgets()
 	_boardCardWidgets.resize(0);
 }
 
-CardWidget* MainWindow::createWidget(const Card* card, const int xIndex, const int yIndex)
+CardWidget* MainWindow::createWidget(const Card* card, const int xIndex, const LabelLocation location)
 {
 	CardWidget* cardWidget = new CardWidget(card, ui->centralwidget);
-	cardWidget->setPosition(xIndex, yIndex);
+	cardWidget->setPosition(xIndex, location);
 	cardWidget->show();
 	return cardWidget;
 }
@@ -83,14 +78,14 @@ void MainWindow::printPlayerHand(PlayerContext* player)
 {
 	cleanHandWidgets();
 
-	const int yIndex = bottom;
 	const Hand* hand = player->getHand();
 
 	for(unsigned int i = 0; i < player->getHandCardNb(); ++i)
 	{
 		const int xIndex = i;
-		CardWidget* cardWidget = createWidget(hand->getCard(i), xIndex, yIndex);
+		CardWidget* cardWidget = createWidget(hand->getCard(i), xIndex, inHand);
 		connect(cardWidget, SIGNAL (cardWidgetClickedSignal()), this, SLOT (playCard()));
+		connect(cardWidget, SIGNAL (hoverLeaveSignal()), this, SLOT (drawHand()));
 		_handCardWidgets.push_back(cardWidget);
 	}	
 }
@@ -99,13 +94,12 @@ void MainWindow::printPlayerBoard(PlayerContext* player)
 {
 	cleanBoardWidgets();
 
-	const int yIndex = top;
 	const Board* board = player->getBoard();
 
 	for(unsigned int i = 0; i < player->getBoardCardNb(); ++i)
 	{
 		const int xIndex = i;
-		CardWidget* cardWidget = createWidget(board->getCard(i), xIndex, yIndex);
+		CardWidget* cardWidget = createWidget(board->getCard(i), xIndex, inBoard);
 		_boardCardWidgets.push_back(cardWidget);
 	}	
 }
@@ -165,7 +159,21 @@ void MainWindow::playCard()
 			{
 				printPlayerContext(player);
 			}
+			_handCardWidgets[i]->setSelected(false);
 			break;
 		}
 	}
 }
+
+void MainWindow::drawHand()
+{
+	PlayerContext* player = getCurrentPlayer();
+
+	for(unsigned int i = 0; i < _handCardWidgets.size(); ++i)
+	{
+		const int xIndex = i;
+		_handCardWidgets[i]->setPosition(xIndex, inHand);
+		_handCardWidgets[i]->raise();
+	}
+}
+

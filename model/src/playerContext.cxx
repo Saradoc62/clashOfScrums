@@ -37,7 +37,7 @@ void PlayerContext::updateMoney(Card* card)
 {
 	if(card->getType().find("Feature") != std::string::npos)
 	{
-		class Feature* feat = dynamic_cast<class Feature*>(card);
+		Feature* feat = dynamic_cast<Feature*>(card);
 		if(feat->getDeadline() > 0)
 			_money += feat->getIncome();
 	}
@@ -76,13 +76,13 @@ bool PlayerContext::playCard(const int index)
 
 void PlayerContext::makeFeature(int featureIdx, int creatureIdx)
 {
-	Card* feat = _board->getCardType(Feature, featureIdx);
-	Card* creat = _board->getCardType(Creature, creatureIdx);
+	Card* feat = _board->getCardType(FeatureType, featureIdx);
+	Card* creat = _board->getCardType(CreatureType, creatureIdx);
 
 	if(feat && creat)
 	{
-		class Feature* feature = dynamic_cast<class Feature*>(feat);
-		class Creature* creature = dynamic_cast<class Creature*>(creat);
+		Feature* feature = dynamic_cast<Feature*>(feat);
+		Creature* creature = dynamic_cast<Creature*>(creat);
 
 		feature->acceptCreature(creature);
 	}
@@ -137,11 +137,11 @@ void PlayerContext::printBoard() const
 void PlayerContext::printBoardFeatures() const
 {
 	std::cout << "* PRINT BOARD FEATURES *" << std::endl;
-	_board->printCardType(Feature);
+	_board->printCardType(FeatureType);
 }
 
 void PlayerContext::printBoardCreatures() const
 {
 	std::cout << "* PRINT BOARD CREATURES *" << std::endl;
-	_board->printCardType(Creature);
+	_board->printCardType(CreatureType);
 }

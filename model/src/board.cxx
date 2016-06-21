@@ -85,7 +85,7 @@ void Board::update()
 	{
 		if(_cards[i]->getType().find("Feature") != std::string::npos)
 		{
-			class Feature* feat = dynamic_cast<class Feature*>(_cards[i]);
+			Feature* feat = dynamic_cast<Feature*>(_cards[i]);
 
 			//Update feature
 			feat->update();

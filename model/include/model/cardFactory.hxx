@@ -19,14 +19,14 @@ public:
 	{
 		switch(attribute.cardType)
 		{
-			case Feature:
-				return new class Feature(attribute);
-			case Creature:
-				return new class Creature(attribute);
-			case Spell:
-				return new class Spell(attribute);
+			case FeatureType:
+				return new Feature(attribute);
+			case CreatureType:
+				return new Creature(attribute);
+			case SpellType:
+				return new Spell(attribute);
 			default:
-				return new class Card(attribute);
+				return new Card(attribute);
 		}
 	}
 
@@ -38,13 +38,13 @@ public:
 	CardType getCardType(std::string type)
 	{
 		if(type == "Feature")
-			return Feature;
+			return FeatureType;
 		if (type == "Creature")
-			return Creature;
+			return CreatureType;
 		else if (type == "Spell")
-			return Spell;
+			return SpellType;
 		else
-			return None;
+			return NoneType;
 	}
 
 	EffectType getEffectType(std::string type)
